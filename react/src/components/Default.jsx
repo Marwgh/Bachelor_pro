@@ -3,7 +3,7 @@ import { useStateContext } from "../context/contextProvider";
 
 export default function DefaultLayout() {
   const {user, token} = useStateContext()
-
+  console.log(user);
   if(!token){
     return <Navigate to="/login"/>
   }
@@ -22,7 +22,7 @@ export default function DefaultLayout() {
           header
         </div>
         <div>
-          {user.name}
+          {user.firstName}
           <a className="logoutBtn" onClick={onLogout} href="#">Logout</a>
         </div>
         <main>

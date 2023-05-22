@@ -14,8 +14,8 @@ export default function Login() {
         <h1>
           Login
         </h1>
-        <input type="email" placeholder="email" name="" id="" />
-        <input type="password" placeholder="password" name="" id="" />
+        <input type="email" placeholder="email" name=""  />
+        <input type="password" placeholder="password" name=""  />
         <button className="loginSubBtn">Login</button>
         <p>
           Not registered, <Link to="/signup">Create an account</Link>
