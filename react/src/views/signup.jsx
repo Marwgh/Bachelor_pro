@@ -29,10 +29,10 @@ export default function Signup() {
       password_confirmation :passwordConfirmRef.current.value
     }
     console.log(payload);
+    
     axiosClient.post('/signup', payload)
     .then((data)=>{
-      debugger
-      console.log(data.data.user);
+
       setUser(data.data.user)
       setToken(data.data.token)
     })
