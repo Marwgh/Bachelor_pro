@@ -19,7 +19,7 @@ export default function Login() {
       password: passwordRef.current.value,
     }
     setErrors(null)
-    debugger
+    
 
     axiosClient.post('/login', payload)
       .then(({data}) => {
