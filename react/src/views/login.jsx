@@ -23,6 +23,9 @@ export default function Login() {
 
     axiosClient.post('/login', payload)
       .then(({data}) => {
+        if (data.user.email === "admin@admin.com") {
+          data.user.admin = true;
+        }
         setUser(data.user)
         setToken(data.token);
       })

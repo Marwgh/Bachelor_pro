@@ -19,13 +19,18 @@ export default function DefaultLayout() {
 
   useEffect( () => {
     axiosClient.get('/user').then(({data})=>{
+      if (data.email === "admin@admin.com") {
+        data.admin = true;
+      }
       setUser(data)
     })
   },[])
   return (
     <div id="defaultLayout">
       <div>
+      {user.admin &&
       <Link to="/dashboard">dashboard</Link>
+      }
       <Link to="/users">users</Link>
       </div>
       <div className="content">
@@ -34,6 +39,7 @@ export default function DefaultLayout() {
         </div>
         <div>
           {user.firstName}
+          {console.log(user)}
           <a className="logoutBtn" onClick={onLogout} href="#">Logout</a>
         </div>
         <main>
