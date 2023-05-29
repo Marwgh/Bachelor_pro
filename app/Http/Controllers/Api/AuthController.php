@@ -17,13 +17,12 @@ class AuthController extends Controller
         $data = $request->validated();
         /** @var \App\Models\User $user */
         $user = User::create([
-            'firstName' => $data['firstName'],
-            'lastName' => $data['lastName'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'job' => $data['job'],
-            'phone' => $data['phone'],
-            'company' => $data['company'],
+            'job' => '',
+            'phone' => '',
+            'company' => '',
             'user_points' => 0,
         ]);
 
@@ -53,4 +52,7 @@ class AuthController extends Controller
         $user->currentAccessToken()->delete();
         return response('', 204);
     }
+
+    
+    
 }

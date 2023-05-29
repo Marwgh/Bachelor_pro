@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 import { useStateContext } from "../context/contextProvider";
 
 
@@ -12,6 +12,8 @@ export default function SecondaryLayout() {
   
   return (
     <div>
+      <Link to='/home' > Home</Link>
+      
       <div>
         Secondary
       <Outlet/>

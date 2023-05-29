@@ -44,8 +44,7 @@ export default function Dashboard() {
         <thead>
           <tr>
             <th>ID</th>
-            <th>FIRST NAME</th>
-            <th>LAST NAME</th>
+            <th>NAME</th>
             <th>EMAIL</th>
             <th>CREATE</th>
             <th>POINTS</th>
@@ -66,8 +65,7 @@ export default function Dashboard() {
             
             <tr key={u.id}>
               <td>{u.id}</td>
-              <td>{u.firstName}</td>
-              <td>{u.lastName}</td>
+              <td>{u.name}</td>
               <td>{u.email}</td>
               <td>{u.created_at}</td>
               <td>{u.user_points}</td>

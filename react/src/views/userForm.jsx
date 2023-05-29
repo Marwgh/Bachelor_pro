@@ -8,8 +8,7 @@ export default function UserForm() {
   let {id} = useParams();
   const [user, setUser] = useState({
     id: null,
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     password: '',
     password_confirmation: ''
@@ -37,7 +36,7 @@ export default function UserForm() {
     ev.preventDefault()
     
     if (user.id) {
-      axiosClient.put(`/user/${user.id}`, user)
+      axiosClient.put(`/users/${user.id}`, user)
         .then(() => {
           
           setNotification('User was successfully updated')
@@ -83,8 +82,7 @@ export default function UserForm() {
         }
         {!loading && (
           <form onSubmit={onSubmit}>
-            <input value={user.firstName} onChange={ev => setUser({...user, firstName: ev.target.value})} placeholder="first Name"/>
-            <input value={user.lastName} onChange={ev => setUser({...user, lastName: ev.target.value})} placeholder="last Name"/>
+            <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder="first Name"/>
             <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
             <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password"/>
             <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Password Confirmation"/>

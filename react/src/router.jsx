@@ -4,9 +4,13 @@ import Signup from "./views/signup.jsx";
 import NotFound from "./views/notFound.jsx";
 import Users from "./views/users.jsx";
 import DefaultLayout from "./components/Default.jsx";
+import Open from "./components/Open.jsx";
 import SecondaryLayout from "./components/Secondary.jsx";
 import Dashboard from "./views/dashboard.jsx";
 import UserForm from "./views/userForm.jsx";
+import Home from "./views/home.jsx";
+import Quizz from "./views/quizz.jsx";
+import Blog from "./views/blog.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +34,27 @@ const router = createBrowserRouter([
         element: <Dashboard/>
       }
     ]
+  },
+  {
+  path: '/',
+  element: <Open/>,
+  children:[
+    {
+      path: '/home',
+      element: <Home/>,
+    },
+    {
+      path: '/quizz',
+      element: <Quizz/>,
+    },
+    {
+      path: '/blog',
+      element: <Blog/>,
+    },
+    {
+
+    }
+  ]
   },
   {
     path: '/',

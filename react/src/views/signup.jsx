@@ -10,14 +10,13 @@ export default function Signup() {
   const {setUser, setToken} = useStateContext()
 
   
-  const firstNameRef = useRef();
-  const lastNameRef = useRef();
+  const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const companyRef = useRef();
-  const jobRef = useRef();
-  const phoneRef = useRef();
+  // const companyRef = useRef();
+  // const jobRef = useRef();
+  // const phoneRef = useRef();
   const [errors, setErrors] = useState(null);
 
 
@@ -25,12 +24,11 @@ export default function Signup() {
   const onSubmit = (ev) => {
     ev.preventDefault();
     const payload = {
-      firstName :firstNameRef.current.value,
-      lastName :lastNameRef.current.value,
+      name :nameRef.current.value,
       email :emailRef.current.value,
-      company :companyRef.current.value,
-      job :jobRef.current.value,
-      phone :phoneRef.current.value,
+      // company :companyRef.current.value,
+      // job :jobRef.current.value,
+      // phone :phoneRef.current.value,
       password :passwordRef.current.value,
       password_confirmation :passwordConfirmRef.current.value
     }
@@ -66,12 +64,11 @@ export default function Signup() {
         </div>
 
         }
-        <input ref={firstNameRef} type="text" placeholder="First Name"  />
-        <input ref={lastNameRef} type="text" placeholder="Last Name"  />
+        <input ref={nameRef} type="text" placeholder="Name"  />
         <input ref={emailRef} type="email" placeholder="email"  />
-        <input ref={companyRef} type="text" placeholder="Company"  />
-        <input ref={jobRef} type="text" placeholder="job"  />
-        <input ref={phoneRef} type="tel" placeholder="+00 000 000"  />
+        {/* <input ref={companyRef} type="text" placeholder="Company"  /> */}
+        {/* <input ref={jobRef} type="text" placeholder="job"  /> */}
+        {/* <input ref={phoneRef} type="tel" placeholder="+00 000 000"  /> */}
         <input ref={passwordRef} type="password" placeholder="password"  />
         <input ref={passwordConfirmRef} type="password" placeholder="password Confirmation"  />
         <button type="submit" className="signupSubBtn">Signup</button>
