@@ -42,7 +42,6 @@ export default function DefaultLayout() {
         </div>
         <div>
           {user.name}
-          {console.log(user)}
           <a className="logoutBtn" onClick={onLogout} href="#">Logout</a>
         </div>
         <main>

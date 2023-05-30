@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { useStateContext } from "../context/contextProvider";
+import { useEffect } from "react";
 import axiosClient from "../axios-client";
 
 
@@ -7,6 +8,16 @@ import axiosClient from "../axios-client";
 export default function OpenLayout() {
   const {user, token ,setUser,setToken} = useStateContext()
 
+  if(token){
+    useEffect( () => {
+      axiosClient.get('/user').then(({data})=>{
+        if (data.email === "admin@admin.com") {
+          data.admin = true;
+        }
+        setUser(data)
+      })
+    },[])
+  }
 
   const onLogout = (ev) => {
     ev.preventDefault();
@@ -18,6 +29,9 @@ export default function OpenLayout() {
   
   return (
     <div> 
+      {user.admin &&
+      <Link to="/dashboard">dashboard</Link>
+      }
       {!token &&
       <div>
         <Link to="/login">Login</Link>
@@ -27,7 +41,6 @@ export default function OpenLayout() {
       {token &&
         <div>
         {user.name}
-        {console.log(user)}
         <a className="logoutBtn" onClick={onLogout} href="#">Logout</a>
       </div>
 

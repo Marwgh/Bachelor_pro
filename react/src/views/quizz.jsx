@@ -48,31 +48,8 @@ export default function Quizz() {
     ev.preventDefault()
     // debugger
     // setQuizzAnswer({... quizzAnswer, user_id : user.id})
-    if (user.id) {
-      axiosClient.put(`/users/${user.id}`, user)
-        .then(() => {
-          console.log(user)
-          setNotification('User was successfully updated')
-        })
-        .catch(err => {
-          const response = err.response;
-          if (response && response.status === 422) {
-            setErrors(response.data.errors)
-          }
-        })
-    } else {
-      axiosClient.post('/user', user)
-        .then(() => {
-          setNotification('User was successfully created')
-        })
-        .catch(err => {
-          const response = err.response;
-          if (response && response.status === 422) {
-            setErrors(response.data.errors)
-          }
-        })
-    }
-    console.log(quizzAnswer);
+    
+    console.log(user)
     axiosClient.post(`/quizz`, quizzAnswer )
         .then(() => {
 
@@ -84,7 +61,53 @@ export default function Quizz() {
           if (response && response.status === 422) {
             setErrors(response.data.errors)
           }
+        }).then(()=> {
+          if (user.id) {
+            axiosClient.put(`/users/${user.id}`, user)
+              .then(() => {
+                console.log(user)
+                setNotification('User was successfully updated')
+              })
+              .catch(err => {
+                const response = err.response;
+                if (response && response.status === 422) {
+                  setErrors(response.data.errors)
+                }
+              })
+          } 
+          else {
+            axiosClient.post('/user', user)
+              .then(() => {
+                setNotification('User was successfully created')
+              })
+              .catch(err => {
+                const response = err.response;
+                if (response && response.status === 422) {
+                  setErrors(response.data.errors)
+                }
+              })
+          }
+          
         })
+    
+    
+  }
+
+  useEffect(() => {
+    if (user.email && user.name && user.phone) {
+      setUser({...user, user_points: (quizzAnswer.user_paragraph.length)*1.5})
+    }else{
+    setUser({...user, user_points: quizzAnswer.user_paragraph.length})
+    }
+
+  },[user.name,user.email,user.phone,quizzAnswer.user_paragraph])
+    
+  
+
+  function pointCalulatorSecond () {
+    console.log("yes")
+    console.log(user)
+    
   }
 
   return (
@@ -102,7 +125,8 @@ export default function Quizz() {
             ))}
           </div>
         }
-
+      
+        {user.user_points}
       {!loading && 
       <form onSubmit={onSubmit}>
       <fieldset onChange={ev => setQuizzAnswer({...quizzAnswer, user_paragraph: ev.target.value})}>
@@ -182,6 +206,7 @@ export default function Quizz() {
       <fieldset>
         <p><strong>Last step:</strong> Whats your best contact information so I can make sure you're notified about the A-player Tips when it's made available?</p>
         <div>
+          {user.name}
         <label htmlFor="">Name</label>
         <input placeholder={user.name}  onChange={ev => setUser({...user, name: ev.target.value})} />
         </div>

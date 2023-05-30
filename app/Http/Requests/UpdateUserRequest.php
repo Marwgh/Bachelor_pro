@@ -24,9 +24,10 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:55',
-            'job' => 'string',
-            'phone' => 'string',
-            'company' => 'string',
+            'job' ,
+            'phone',
+            'company' ,
+            'user_points' => 'required' ,
             'email' => 'required|email|unique:users,email,'.$this->id,
             'password' => [
                 'confirmed',

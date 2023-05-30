@@ -12,6 +12,7 @@ export default function SecondaryLayout() {
   
   return (
     <div>
+      
       <Link to='/home' > Home</Link>
       
       <div>

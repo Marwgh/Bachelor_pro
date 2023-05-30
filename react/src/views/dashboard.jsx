@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../axios-client.js";
 import { Link } from "react-router-dom";
+import UserInforModale from "./item/userInfo.jsx"
 import {useStateContext} from "../context/ContextProvider.jsx";
 
 export default function Dashboard() {
   const [users,setUsers] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const [loading,setLoading] = useState(false);
-  const {setNotification} = useStateContext()
-
-
+  const {setNotification} = useStateContext();
+  const [userId,setUserId] = useState(null);
   useEffect( () => {
     getUers();
   }, [])
@@ -33,6 +34,13 @@ export default function Dashboard() {
       setLoading(false)
     })
   }
+  function openModal(user) {
+    setShowModal (true);
+    console.log(user.id)
+    console.log("yes")
+    setUserId(user.id);
+
+  }
 
   return (
     <div>
@@ -48,6 +56,9 @@ export default function Dashboard() {
             <th>EMAIL</th>
             <th>CREATE</th>
             <th>POINTS</th>
+            <th>COMPANY</th>
+            <th>JOB</th>
+            <th>PHONE</th>
             <th>ACTION</th>
           </tr>
         </thead>
@@ -69,9 +80,13 @@ export default function Dashboard() {
               <td>{u.email}</td>
               <td>{u.created_at}</td>
               <td>{u.user_points}</td>
+              <td>{u.company}</td>
+              <td>{u.job}</td>
+              <td>{u.phone}</td>
               <td>
                 <Link to={'/users/'+u.id} >Edit</Link>
                 <button onClick={ev => onDelete(u)} >Delete</button>
+                <button onClick={ev => openModal(u)}>Open info</button>
               </td>
             
             </tr>
@@ -80,7 +95,12 @@ export default function Dashboard() {
         </tbody>
 
         }
+        
       </table>
+      {showModal &&
+        <UserInforModale userId={userId} setShowModal={setShowModal} />
+
+        }
     </div>
   )
 }
