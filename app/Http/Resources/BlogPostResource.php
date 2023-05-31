@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class QuizzResource extends JsonResource
+class BlogPostResource extends JsonResource
 {
     public static $wrap = false;
     /**
@@ -16,13 +16,11 @@ class QuizzResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'quizz_id'=> $this->quizz_id,
+            'post_id'=> $this->post_id,
             'user_id'=> $this->user_id,
-            'quizz_name'=> $this->quizz_name,
-            'user_paragraph'=> $this->user_paragraph,
-            'team_desciption'=> $this->team_desciption,
-            'income'=> $this->income,
-            'recruitment_type'=> $this->recruitment_type,
+            'post_title'=> $this->post_title,
+            'post_text'=> $this->post_text,
+            'post_image'=> $this->post_image,
             // 'created_at'=> $this->created_at->format('Y-m-d H:i:s'),
 
             

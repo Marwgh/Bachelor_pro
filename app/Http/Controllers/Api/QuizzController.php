@@ -8,6 +8,8 @@ use App\Http\Requests\StoreQuizzRequest;
 use App\Http\Requests\UpdateQuizzRequest;
 use App\Http\Requests\QuizzRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\QuizzResource;
+
 
 
 
@@ -15,10 +17,13 @@ class QuizzController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        //
+        return response( QuizzResource::collection(
+            Quizz::query()->orderBy('quizz_id','desc')->paginate(10)
+        ),200 );
     }
 
     /**
@@ -42,44 +47,45 @@ class QuizzController extends Controller
 
     
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store()
-    {
-        //
-    }
-
+    
     /**
      * Display the specified resource.
      */
     public function show(Quizz $quizz)
     {
-        //
+        return response(new QuizzResource($quizz) , 200);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    // public function store()
+    // {
+    //     //
+    // }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Quizz $quizz)
-    {
-        //
-    }
+    // public function edit(Quizz $quizz)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateQuizzRequest $request, Quizz $quizz)
-    {
-        //
-    }
+    // public function update(UpdateQuizzRequest $request, Quizz $quizz)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Quizz $quizz)
-    {
-        //
-    }
+    // public function destroy(Quizz $quizz)
+    // {
+    //     //
+    // }
 }

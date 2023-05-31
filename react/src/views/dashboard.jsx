@@ -10,6 +10,7 @@ export default function Dashboard() {
   const [loading,setLoading] = useState(false);
   const {setNotification} = useStateContext();
   const [userId,setUserId] = useState(null);
+  const [quizzs,setQuizzs] = useState([]);
   useEffect( () => {
     getUers();
   }, [])
@@ -36,9 +37,11 @@ export default function Dashboard() {
   }
   function openModal(user) {
     setShowModal (true);
-    console.log(user.id)
-    console.log("yes")
     setUserId(user.id);
+    axiosClient.get('/quizz').then(({data})=> {
+      setQuizzs(data)
+
+    })
 
   }
 
@@ -98,7 +101,7 @@ export default function Dashboard() {
         
       </table>
       {showModal &&
-        <UserInforModale userId={userId} setShowModal={setShowModal} />
+        <UserInforModale userId={userId} setShowModal={setShowModal} quizzs={quizzs} />
 
         }
     </div>

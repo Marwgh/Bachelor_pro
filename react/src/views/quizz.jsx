@@ -5,20 +5,12 @@ import { useEffect, useState } from "react";
 
 
 export default function Quizz() {
-  const { token ,setNotification} = useStateContext()
+  const { user ,token ,setUser,setNotification} = useStateContext()
   const [loading,setLoading] = useState(false);
-  const [errors, setErrors] = useState(null)
+  const [errors, setErrors] = useState(null);
+  const [quizzs,setQuizzs] = useState([]);
+  const [hasQuizz, setHasQuizz ] = useState(false);
   const navigate = useNavigate();
-  const [user, setUser] = useState({
-    id: null,
-    name: '',
-    email: '',
-    job:'',
-    company: '' ,
-    phone: '' ,
-    password: '',
-    password_confirmation: ''
-  })
   const [quizzAnswer,setQuizzAnswer] = useState({
     id:null,
     quizz_name:'baseQuizz',
@@ -28,21 +20,22 @@ export default function Quizz() {
     income:'',
     recruitment_type:'',
   })
-
   if (token) {
     useEffect(() => {
       setLoading(true)
-      axiosClient.get('/user').then(({data})=>{
-        setUser(data)
-        setQuizzAnswer({...quizzAnswer, user_id: data.id})
-        setLoading(false)
-      }).catch(() => {
-          setLoading(false)
-        })
-    }, [])
+      axiosClient.get('/quizz').then(({data})=> {
+        setQuizzs(data)
+      }).then(()=>{
+        quizzs.forEach(quizz => {
     
+          if (quizz.user_id == user.id) {
+            setHasQuizz(true)
+          }
+        });
+      setLoading(false)
+      })
+    }, [])
   }
-  // console.log(quizzAnswer);
 
   const onSubmit = ev => {
     ev.preventDefault()
@@ -104,12 +97,6 @@ export default function Quizz() {
     
   
 
-  function pointCalulatorSecond () {
-    console.log("yes")
-    console.log(user)
-    
-  }
-
   return (
     <div>
       {loading &&
@@ -125,9 +112,11 @@ export default function Quizz() {
             ))}
           </div>
         }
+
       
-        {user.user_points}
-      {!loading && 
+      
+      {!loading && user.hasQuizz===false &&
+      
       <form onSubmit={onSubmit}>
       <fieldset onChange={ev => setQuizzAnswer({...quizzAnswer, user_paragraph: ev.target.value})}>
         <p>1. When it comes to hiring high quality employees, what's the <strong>single biggest challenge</strong> you've been struggling with ?</p>
@@ -259,7 +248,16 @@ export default function Quizz() {
         <button type="submit">Submit</button>
       </fieldset>
       }
-    </form>
+      </form>
+
+      }
+
+      {hasQuizz===true &&
+      <div>
+        <h1>You allready have taken the quizz! Thank you for submiting!</h1>
+        <p>Our team will contact you shortly!</p>
+        
+      </div>
 
       }
     </div>

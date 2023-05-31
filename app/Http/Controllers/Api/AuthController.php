@@ -23,7 +23,7 @@ class AuthController extends Controller
             'job' => '',
             'phone' => '',
             'company' => '',
-            'user_points' => $data['user_points'],
+            'user_points' =>isset( $data['user_points']) ? $data['user_points']: 0 ,
         ]);
 
         $token = $user->createToken('main')->plainTextToken;
