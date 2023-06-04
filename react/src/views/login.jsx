@@ -46,12 +46,15 @@ export default function Login() {
   }
 
   return (
-    <div className="login-signup-form animated fadeInDown">
-      <div className="form">
+    <main >
+      <div >
         <form onSubmit={onSubmit}>
-          <h1 className="title">Login into your account</h1>
+          <h1 >
+          Welcome to Endorfinas Media <br /> 
+          Sign in to continue 
+          </h1>
 
-          {errors && <div className="alert">
+          {errors && <div>
 
           {Object.keys(errors).map(key => (
             <p key={key}>{errors[key][0]}</p>
@@ -63,10 +66,13 @@ export default function Login() {
 
           <input ref={emailRef} type="email" placeholder="Email"/>
           <input ref={passwordRef} type="password" placeholder="Password"/>
-          <button className="btn btn-block">Login</button>
-          <p className="message">Not registered? <Link to="/signup">Create an account</Link></p>
+          <button >Login</button>
+          <p>Not registered? <Link to="/signup">Create an account</Link></p>
         </form>
       </div>
-    </div>
+      <div>
+        <img src="" alt="" />
+      </div>
+    </main>
   )
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
 use App\Http\Requests\StoreBlogPostRequest;
 use App\Http\Requests\UpdateBlogPostRequest;
+use App\Http\Resources\BlogPostResource;
+
 
 class BlogPostController extends Controller
 {
@@ -14,7 +16,9 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        //
+        return response( BlogPostResource::collection(
+            BlogPost::query()->orderBy('post_id','desc')->paginate(10)
+        ),200 );
     }
 
     /**

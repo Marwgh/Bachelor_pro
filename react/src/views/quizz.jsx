@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 
 export default function Quizz() {
-  const { user ,token ,setUser,setNotification} = useStateContext()
+  const { token ,setNotification} = useStateContext()
   const [loading,setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
   const [quizzs,setQuizzs] = useState([]);
@@ -20,34 +20,62 @@ export default function Quizz() {
     income:'',
     recruitment_type:'',
   })
+  const [user, setUser] = useState({
+    id: null,
+    name: '',
+    email: '',
+    job:'none',
+    company: 'none' ,
+    phone: ' none' ,
+    password: '',
+    password_confirmation: ''
+  })
   if (token) {
     useEffect(() => {
       setLoading(true)
-      axiosClient.get('/quizz').then(({data})=> {
-        setQuizzs(data)
+      axiosClient.get('/user').then(({data})=>{
+        setUser(data)
+        setQuizzAnswer({...quizzAnswer, user_id: data.id})
       }).then(()=>{
-        quizzs.forEach(quizz => {
-    
-          if (quizz.user_id == user.id) {
-            setHasQuizz(true)
-          }
-        });
-      setLoading(false)
+        axiosClient.get('/quizz').then(({data})=> {
+          setQuizzs(data)
+        })
+        
       })
+      
     }, [])
   }
+  useEffect(()=>{
+    quizzs.map((quizz,i ) => {
+      i++
+      if (quizz.user_id == user.id) {
+        setHasQuizz(true)
+        setLoading(false)
+      }
+      if (i === quizzs.length) {
+        setLoading(false)
+      }
+    });
+
+  },[quizzs])
 
   const onSubmit = ev => {
     ev.preventDefault()
     // debugger
     // setQuizzAnswer({... quizzAnswer, user_id : user.id})
+    if (!user.job || user.job.length < 2) {
+      user.job = "no answers"
+    }
+    if  (!user.phone || user.phone.length < 2) {
+      user.phone = "no answers"
+    }
+    if ( !user.company || user.company.length < 2) {
+      user.company = "no answers"
+    }
     
-    console.log(user)
     axiosClient.post(`/quizz`, quizzAnswer )
         .then(() => {
-
           setNotification('Quizz sent')
-          navigate('/home')
         })
         .catch(err => {
           const response = err.response;
@@ -56,10 +84,13 @@ export default function Quizz() {
           }
         }).then(()=> {
           if (user.id) {
+            
+            console.log(user)
             axiosClient.put(`/users/${user.id}`, user)
               .then(() => {
-                console.log(user)
                 setNotification('User was successfully updated')
+                navigate('/home')
+
               })
               .catch(err => {
                 const response = err.response;
@@ -72,6 +103,7 @@ export default function Quizz() {
             axiosClient.post('/user', user)
               .then(() => {
                 setNotification('User was successfully created')
+                navigate('/home')
               })
               .catch(err => {
                 const response = err.response;
@@ -95,17 +127,16 @@ export default function Quizz() {
 
   },[user.name,user.email,user.phone,quizzAnswer.user_paragraph])
     
-  
 
   return (
     <div>
-      {loading &&
-      <div>
-        <p>Loading ...</p>
-      </div>
+        {loading &&
+        <div>
+          <p>Loading ...</p>
+        </div>
+        }
 
-      }
-      {errors &&
+        {errors &&
           <div className="alert">
             {Object.keys(errors).map(key => (
               <p key={key}>{errors[key][0]}</p>
@@ -113,9 +144,7 @@ export default function Quizz() {
           </div>
         }
 
-      
-      
-      {!loading && user.hasQuizz===false &&
+      {hasQuizz==false && !loading  &&
       
       <form onSubmit={onSubmit}>
       <fieldset onChange={ev => setQuizzAnswer({...quizzAnswer, user_paragraph: ev.target.value})}>
@@ -195,13 +224,12 @@ export default function Quizz() {
       <fieldset>
         <p><strong>Last step:</strong> Whats your best contact information so I can make sure you're notified about the A-player Tips when it's made available?</p>
         <div>
-          {user.name}
         <label htmlFor="">Name</label>
-        <input placeholder={user.name}  onChange={ev => setUser({...user, name: ev.target.value})} />
+        <p>{user.name}</p>
         </div>
         <div>
         <label htmlFor="">Email</label>
-        <input placeholder={user.email}  onChange={ev => setUser({...user, email: ev.target.value})}  />
+        <p>{user.email}</p>
         </div>
         <p></p>
         <div>
@@ -214,7 +242,7 @@ export default function Quizz() {
         </div>
         <div>
         <label htmlFor="">Job</label>
-        <input type="text" onChange={ev => setUser({...user, job: ev.target.value})} />
+        <input type="text" onChange={ev => setUser({...user, job: ev.target.value})}  />
         </div>
         <button type="submit" >Submit</button>
 
@@ -252,7 +280,7 @@ export default function Quizz() {
 
       }
 
-      {hasQuizz===true &&
+      {hasQuizz==true &&
       <div>
         <h1>You allready have taken the quizz! Thank you for submiting!</h1>
         <p>Our team will contact you shortly!</p>

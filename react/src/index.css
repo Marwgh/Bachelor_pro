@@ -1,0 +1,23 @@
+@import url('style/nav.css');
+
+:root {
+  --primaryColor: #6600ff;
+  --secondaryColor: #e100ff;
+  --tertiaryColor: #a064ff;
+  --quadraryColor: white;
+  --whiteSpace: #F3F3F3;
+  --buttonColor: #1df198;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+  font-family: 'Noto Sans';
+}
+
+
+body {
+  background-color: var(--whiteSpace);
+}

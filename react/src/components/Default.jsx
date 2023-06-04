@@ -2,6 +2,8 @@ import { Link, Navigate, Outlet } from "react-router-dom";
 import { useStateContext } from "../context/contextProvider";
 import { useEffect } from "react";
 import axiosClient from "../axios-client";
+import Footer from "../views/item/footer";
+
 
 export default function DefaultLayout() {
   const {user, token, notification ,setUser,setToken} = useStateContext()
@@ -31,10 +33,13 @@ export default function DefaultLayout() {
       {user.admin &&
       <Link to="/dashboard">dashboard</Link>
       }
-      <Link to="/users">users</Link>
       <Link to="/home">Home</Link>
+      <Link to="/aboutUs">About Us</Link>
       <Link to="/quizz">Quizz</Link>
       <Link to="/blog">Blog</Link>
+      <Link to="/profile">profile</Link>
+      <Link to="#">Learn more about our approach</Link>
+
       </div>
       <div className="content">
         <div>
@@ -52,6 +57,7 @@ export default function DefaultLayout() {
       <div>
       {notification}
     </div>}
+    <Footer/>
     </div>
 
   )

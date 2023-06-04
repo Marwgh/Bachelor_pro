@@ -2,7 +2,7 @@ import{createBrowserRouter} from "react-router-dom";
 import Login from "./views/login.jsx";
 import Signup from "./views/signup.jsx";
 import NotFound from "./views/notFound.jsx";
-import Users from "./views/users.jsx";
+import Profile from "./views/profile.jsx";
 import DefaultLayout from "./components/Default.jsx";
 import Open from "./components/Open.jsx";
 import SecondaryLayout from "./components/Secondary.jsx";
@@ -11,6 +11,7 @@ import UserForm from "./views/userForm.jsx";
 import Home from "./views/home.jsx";
 import Quizz from "./views/quizz.jsx";
 import Blog from "./views/blog.jsx";
+import AboutUs from "./views/aboutUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,8 @@ const router = createBrowserRouter([
     element: <DefaultLayout/>,
     children : [
       {
-        path: '/users',
-        element: <Users/>
+        path: '/profile',
+        element: <Profile/>
       },
       {
         path: '/users/new',
@@ -52,7 +53,8 @@ const router = createBrowserRouter([
       element: <Blog/>,
     },
     {
-
+      path: '/aboutUs',
+      element: <AboutUs/>,
     }
   ]
   },

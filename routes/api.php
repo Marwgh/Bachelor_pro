@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function() {
 
 });
 
+Route::get('/getPosts', [BlogPostController::class , 'index'] );
 Route::post('/signup' , [AuthController::class , 'signup']);
 Route::post('/login' , [AuthController::class , 'login']);
 Route::post('/quizz' , [QuizzController::class , 'create']);

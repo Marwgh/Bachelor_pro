@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import { useStateContext } from "../context/contextProvider";
 import { useEffect } from "react";
 import axiosClient from "../axios-client";
+import Footer from "../views/item/footer";
 
 
 
@@ -19,45 +20,33 @@ export default function OpenLayout() {
     },[])
   }
 
-  const onLogout = (ev) => {
-    ev.preventDefault();
-    axiosClient.post('/logout').then(()=>{
-      setUser({})
-      setToken(null)
-    })
-  }
   
   return (
     <div> 
-      {user.admin &&
-      <Link to="/dashboard">dashboard</Link>
-      }
-      {!token &&
-      <div>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
-      </div>
-      }
-      {token &&
-        <div>
-        {user.name}
-        <a className="logoutBtn" onClick={onLogout} href="#">Logout</a>
-      </div>
+      <nav>
+        {user.admin &&
+        <Link to="/dashboard">dashboard</Link>
+        }
+        <Link to='/home' > <img src="../logo.svg" alt="Endors Finass Logo" /></Link>
+        <Link to="/aboutUs">About Us</Link>
+        <Link to="/quizz">Quizz</Link>
+        <Link to="/blog">Blog</Link>
+        {!token &&
+          <Link to="/signup">Signup</Link>
+        }
+        {token &&
+        <Link to="/profile">profile</Link>
+        }
+      <Link to="#">Learn more about our approach</Link>
 
-
-      }
-      <Link to='/home' > Home</Link>
-      <Link to="/quizz">Quizz</Link>
-      <Link to="/blog">Blog</Link>
-      {token &&
-      <Link to="/users">users</Link>
-
-      }
+      </nav>
 
       <div>
         Open
       <Outlet/>
       </div>
+      <Footer/>
+
     </div>
 
   )
