@@ -1,4 +1,6 @@
 @import url('style/nav.css');
+@import url('style/home.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
   --primaryColor: #6600ff;
@@ -14,10 +16,70 @@
   margin: 0;
   padding: 0;
   box-sizing: content-box;
-  font-family: 'Noto Sans';
+  font-family: 'Noto Sans', sans-serif;
 }
+
+
 
 
 body {
   background-color: var(--whiteSpace);
+  overflow-x: hidden;
+}
+
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  color: black;
+}
+
+h1 {
+  font-size: 2.8vw;
+  font-weight: 700;
+  line-height: 3.2vw;
+}
+
+h2 {
+  font-size: 2.2vw;
+  font-weight: 300;
+
+}
+
+p {
+  font-size: 1.2vw;
+  font-weight: 500;
+}
+
+.button {
+  display: block;
+  background-color: var(--buttonColor);
+  padding: 1vw 1.2vw;
+  border-radius: 2vw;
+  text-align: center;
+}
+
+.button:hover {
+  filter: brightness(1.15);
+}
+
+.learnMore {
+  display: block;
+  padding: 1vw 1.2vw;
+  border: 1px solid black;
+  border-radius: 2vw;
+  background-color: var(--quadraryColor);
+}
+
+#companyLogosHolder {
+  display: flex;
+  justify-content: space-around;
+  filter: grayscale(1);
+  width: 100%;
+
+}
+
+#companyLogosHolder img {
+  height: 3vw;
+  width: auto;
 }

@@ -1,0 +1,143 @@
+#homePage>header {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 48vw;
+  position: relative;
+}
+
+#homePage>header::before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url(../../images/fillerOne.png);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+}
+
+#homePage>header>div {
+  position: absolute;
+  width: 40vw;
+  height: 35vw;
+  top: 5vw;
+  left: 5vw;
+  color: var(--quadraryColor);
+}
+
+#homePage>header>div> :first-child {
+  font-weight: 300;
+  font-size: 1vw;
+  margin-bottom: 1vw;
+}
+
+#homePage>header>div h1 {
+  margin-bottom: 4vw;
+}
+
+#homePage>header>div a {
+  font-size: 0.95vw;
+  font-weight: 600;
+}
+
+#homePage>header>div p {
+  line-height: 2.5vw;
+}
+
+#homePage>header>div .buttonHolderHeader {
+  display: flex;
+  justify-content: space-around;
+  margin: 2vw 0;
+  align-items: center;
+  width: 90%;
+}
+
+#homePage>header>div .reviewHeader {
+  display: flex;
+  margin-bottom: 1vw;
+  width: 10vw;
+  justify-content: space-around;
+
+}
+
+#homePage>header>div .reviewHeader> :first-child {
+  color: yellow;
+}
+
+#homePage>header>div .reviewHeader>p {
+  font-size: 0.8vw;
+  font-weight: 400;
+}
+
+
+#homePage>header>div .paymentHeader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 5vw;
+}
+
+#homePage>header>div .paymentHeader img {
+  height: 1.4vw;
+  width: auto;
+}
+
+#homePage>header>div .installAppHeader {
+  display: flex;
+  justify-content: space-around;
+  width: 20vw;
+}
+
+#homePage>header>div .installAppHeader img {
+  height: 2vw;
+  width: auto;
+}
+
+/* PARTNERED    PARTNERED   PARTNERED   PARTNERED   PARTNERED   PARTNERED   PARTNERED */
+
+#homePage>.partnered {
+  display: grid;
+  width: 100%;
+  justify-items: center;
+  height: 25vw;
+  position: relative;
+  margin-bottom: 10vw;
+
+}
+
+#homePage>.partnered>img {
+  margin-top: 2vw;
+}
+
+#homePage>.partnered h2 {
+  width: 40vw;
+  text-align: center;
+  margin-bottom: 4vw;
+}
+
+
+#homePage>.partnered>#popUpOutPerform {
+  position: absolute;
+  background-color: var(--primaryColor);
+  color: var(--quadraryColor);
+  bottom: -6.5vw;
+  right: 7vw;
+  width: 7vw;
+  height: 5vw;
+  padding: 1.5vw;
+  border-radius: 1vw;
+}
+
+#homePage>.partnered>#popUpOutPerform>:first-child {
+  font-size: 0.8vw;
+  margin-bottom: 0.5vw;
+  font-weight: 400;
+}
+
+#homePage>.partnered>#popUpOutPerform>:last-child {
+  font-size: 1.4vw;
+  font-weight: 700;
+}

@@ -27,22 +27,26 @@ export default function OpenLayout() {
         {user.admin &&
         <Link to="/dashboard">dashboard</Link>
         }
-        <Link to='/home' > <img src="../logo.svg" alt="Endors Finass Logo" /></Link>
-        <Link to="/aboutUs">About Us</Link>
-        <Link to="/quizz">Quizz</Link>
-        <Link to="/blog">Blog</Link>
-        {!token &&
-          <Link to="/signup">Signup</Link>
-        }
-        {token &&
-        <Link to="/profile">profile</Link>
-        }
-      <Link to="#">Learn more about our approach</Link>
+        <Link to='/home' className="logoNav"> <img src="../svg/logo.svg" alt="Endors Finass Logo" /></Link>
+        <div className="linkHolder1">
+          <Link to="/aboutUs">About Us</Link>
+          <Link to="/quizz">Quizz</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="#">Get started</Link>
+        </div>
+        <div className="linkHolder2">
+          {!token &&
+            <Link className="button" to="/login">Sign in</Link>
+          }
+          {token &&
+            <Link className="button" to="/profile">profile</Link>
+          }
+          <Link className="learnMore" to="#">Learn more about our approach</Link>
+        </div>
 
       </nav>
 
       <div>
-        Open
       <Outlet/>
       </div>
       <Footer/>

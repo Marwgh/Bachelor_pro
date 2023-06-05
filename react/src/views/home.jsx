@@ -1,25 +1,48 @@
 import { Link } from "react-router-dom";
+import CompanyLogos from "./item/companyLogos";
 
 
 
 export default function Home() {
 
   return (
-    <main>
+    <main id="homePage">
       <header>
+        <div>
         <p>Marketing That Works</p>
         <h1>Marketing Roadmap for Generating New Sales.</h1>
         <p>Transform your marketing strategy and skyrocket your sales by implementing our proven 9-Step roadmap. Experience up to 2X increase in just 90 days.</p>
-        <div>
-          <Link to="#">Claim your free website audit</Link>
-          <Link to="#">Learn more about out approach </Link>
+        <div className="buttonHolderHeader">
+          <Link className="button" to="#">Claim your free website audit</Link>
+          <Link className="learnMore" to="#">Learn more about out approach </Link>
         </div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div className="reviewHeader">
+        <p>★★★★</p>
+        <p>4.7 / 5 Review </p>
+        </div>
+        <div className="paymentHeader">
+          <img src="../svg/strip.svg" alt="stripe" />
+          <img src="../svg/visa.svg" alt="visa" />
+          <img src="../svg/union.svg" alt="union" />
+          <img src="../svg/masterCard.svg" alt="masterCard" />
+          <img src="../svg/DinersClub.svg" alt="DinersClub" />
+          <img src="../svg/appelPay.svg" alt="appelPay" />
+          <img src="../svg/googlePay.svg" alt="googlePay" />
+        </div>
+        <div className="installAppHeader">
+          <img src="../svg/appelStore.svg" alt="appelStore" />
+          <img src="../svg/googlePlay.svg" alt="googlePlay" />
+        </div>
+        </div>
       </header>
-      <section>
-        {/* component */}
+      <section className="partnered">
+        <img src="../svg/endorFinasIcon.svg" alt="" />
+        <h2>We have partnered with startups, scale-ups, and Fortune 500 companies.</h2>
+        <CompanyLogos/>
+        <div id="popUpOutPerform">
+          <p>Outperform Industry Benchmarks With</p>
+          <p>300%</p>
+        </div>
       </section>
       <section>
         <h2></h2>

@@ -1,5 +1,34 @@
 nav {
   background-color: var(--quadraryColor);
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(14, 1fr);
+  height: 5vw;
+  align-content: center;
+}
+
+.logoNav>img {
+  margin: 1vw;
+  height: 2.5vw;
+  width: auto;
+
+}
+
+nav a {
+  font-size: 1vw;
+}
+
+.linkHolder1 {
+  display: flex;
+  grid-column: 6/9;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.linkHolder2 {
+  display: flex;
+  grid-column: 11/15;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
 }

@@ -29,21 +29,24 @@ export default function DefaultLayout() {
   },[])
   return (
     <div id="defaultLayout">
-      <div>
-      {user.admin &&
-      <Link to="/dashboard">dashboard</Link>
-      }
-      <Link to="/home">Home</Link>
-      <Link to="/aboutUs">About Us</Link>
-      <Link to="/quizz">Quizz</Link>
-      <Link to="/blog">Blog</Link>
-      <Link to="/profile">profile</Link>
-      <Link to="#">Learn more about our approach</Link>
-
-      </div>
+      <nav>
+      <Link to='/home' className="logoNav"> <img src="../svg/logo.svg" alt="Endors Finass Logo" /></Link>
+        <div className="linkHolder1">
+          <Link to="/aboutUs">About Us</Link>
+          <Link to="/quizz">Quizz</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="#">Get started</Link>
+          {user.admin &&
+            <Link to="/dashboard">dashboard</Link>
+          }
+        </div>
+        <div className="linkHolder2">
+          <Link className="button" to="/profile">profile</Link>
+          <Link className="learnMore" to="#">Learn more about our approach</Link>
+        </div>
+      </nav>
       <div className="content">
         <div>
-          header
         </div>
         <div>
           {user.name}
