@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export default function Footer() {
@@ -6,12 +7,12 @@ export default function Footer() {
   return(
     <footer>
       <div>
-        <div>
-          <img src="/logo.svg" alt="" />
+        <div className="smallDescription">
+          <img src="../svg/logoWhite.svg" alt="" />
           <div>
-            <p>At Endorfinas Media, we recognize that reaching marketing objectives can be a challenge. </p>
-            <p>To assist our clients in overcoming this, we have created a 9-step roadmap that guarantees success.</p>
-            <button>Learn About Our Approach</button>
+            <p>At Endorfinas Media, we recognize that reaching marketing objectives can be a challenge. <br/> <br/>
+            To assist our clients in overcoming this, we have created a 9-step roadmap that guarantees success.</p>
+            <Link to="#" className="learnMore">Learn About Our Approach</Link>
           </div>
         </div>
         <div>
@@ -58,11 +59,14 @@ export default function Footer() {
         </div>
       </div>
       <div>
-        <p>Endorfinas | Copyright 2023</p>
-        <p>Legal Notice </p>
-        <p>Privacy Policy </p>
-        <p>Terms and conditions </p>
-        <img src="" alt="" />
+        <p className="copyright">Endorfinas | Copyright 2023</p>
+        <p className="notice">Legal Notice </p>
+        <p className="policy">Privacy Policy </p>
+        <p className="conditions">Terms and conditions </p>
+        <div className="installAppFooter">
+          <img src="../svg/appelStore.svg" alt="appelStore" />
+          <img src="../svg/googlePlay.svg" alt="googlePlay" />
+        </div>
       </div>
     </footer>
   )

@@ -23,7 +23,7 @@ export default function SecondaryLayout() {
       </div>
       <div className="linkHolder2">
         <Link className="button" to="/signup">Sign up</Link>
-        <Link className="learnMore" to="#"><img/> Learn more about our approach</Link>
+        <Link className="learnMore" to="#"><img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" /> Learn more about our approach</Link>
       </div>
       
       </nav>

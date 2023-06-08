@@ -41,7 +41,7 @@ export default function OpenLayout() {
           {token &&
             <Link className="button" to="/profile">profile</Link>
           }
-          <Link className="learnMore" to="#">Learn more about our approach</Link>
+          <Link className="learnMore" to="#" ><img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" />Learn more about our approach</Link>
         </div>
 
       </nav>

@@ -110,6 +110,8 @@
 
 #homePage>.partnered>img {
   margin-top: 2vw;
+  height: auto;
+  width: 4vw;
 }
 
 #homePage>.partnered h2 {
@@ -140,4 +142,488 @@
 #homePage>.partnered>#popUpOutPerform>:last-child {
   font-size: 1.4vw;
   font-weight: 700;
+}
+
+
+/*HOLDINGYOUBACK    HOLDINGYOUBACK    HOLDINGYOUBACK    HOLDINGYOUBACK    HOLDINGYOUBACK    HOLDINGYOUBACK*/
+
+#homePage>.holdingYouBack {
+  width: 80%;
+  padding: 0 10%;
+  height: 55vw;
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 10vw;
+}
+
+#homePage>.holdingYouBack>h2 {
+  width: 40%;
+  text-align: center;
+}
+
+#homePage>.holdingYouBack>div {
+  width: 100%;
+  height: 30vw;
+  position: relative;
+  border-radius: 1vw;
+
+}
+
+#homePage>.holdingYouBack>div::before {
+  z-index: 1;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url(../../images/fillerOne.png);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+  border-radius: 1vw;
+
+}
+
+#homePage>.holdingYouBack>div>div {
+  z-index: 2;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 2vw;
+  width: 90%;
+  padding: 0 5%;
+  margin-top: 10vw;
+}
+
+/*HEAVYLIFTING    HEAVYLIFTING    HEAVYLIFTING    HEAVYLIFTING    HEAVYLIFTING    HEAVYLIFTING*/
+
+#homePage>.heavyLifting {
+  width: 100%;
+  height: 60vw;
+  background: rgb(102, 0, 255);
+  background: linear-gradient(146deg, rgba(102, 0, 255, 1) 0%, rgba(225, 0, 255, 1) 100%);
+  display: grid;
+  grid-template-rows: 3fr 5fr;
+}
+
+#homePage>.heavyLifting>.img {
+  width: 100%;
+  height: auto;
+  background-image: url(../../images/fillerTwo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#homePage>.heavyLifting> :last-child {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+#homePage>.heavyLifting> :last-child>:first-child {
+  color: var(--quadraryColor);
+
+  padding: 6vw 9vw 4vw 9vw;
+}
+
+#homePage>.heavyLifting> :last-child>:first-child>h2 {
+  font-size: 3vw;
+  line-height: 3.2vw;
+  margin-bottom: 2vw;
+}
+
+#homePage>.heavyLifting> :last-child>:first-child>p {
+  margin-bottom: 3vw;
+  font-size: 1vw;
+  font-weight: 400;
+}
+
+#homePage>.heavyLifting> :last-child>:first-child>a {
+  width: 16vw;
+}
+
+#homePage>.heavyLifting> :last-child>:last-child {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5vw 1vw;
+  width: 90%;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+/*POTENTIAL   POTENTIAL   POTENTIAL   POTENTIAL   POTENTIAL   POTENTIAL*/
+
+#homePage>.potential {
+  display: grid;
+  width: 70%;
+  padding: 0 15%;
+  height: 60vw;
+  margin-top: 10vw;
+  margin-bottom: 10vw;
+  align-items: center;
+  justify-items: center;
+}
+
+#homePage>.potential>h2 {
+  text-align: center;
+  width: 45vw;
+  margin-bottom: 6vw;
+  font-size: 3vw;
+}
+
+#homePage>.potential>.stageHolder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3vw;
+  margin-bottom: 3vw;
+}
+
+#homePage>.potential>.lastStage {
+  width: 64vw;
+  height: 17vw;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5vw;
+  padding: 0.7vw;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 2vw;
+  margin-bottom: 4vw;
+  background-color: var(--quadraryColor);
+}
+
+#homePage>.potential>.lastStage>img {
+  border-radius: 0.5vw;
+  height: 100%;
+}
+
+#homePage>.potential>.lastStage>div>.stage {
+  color: var(--primaryColor);
+  font-weight: 600;
+  font-size: 0.9vw;
+  margin: 1vw 0;
+}
+
+#homePage>.potential>.lastStage>div>h3 {
+  margin-bottom: 2vw;
+  font-size: 1.4vw;
+}
+
+#homePage>.potential>.lastStage>div>.text {
+  font-weight: 300;
+  font-size: 0.8vw;
+  word-break: break-all;
+}
+
+#homePage>.potential>.lastStage>a {
+  position: absolute;
+  bottom: 9vw;
+  right: 12vw;
+  text-decoration: underline;
+}
+
+/*FILLERIMAGESECTION   FILLERIMAGESECTION   FILLERIMAGESECTION   FILLERIMAGESECTION   FILLERIMAGESECTION   FILLERIMAGESECTION*/
+
+#homePage>.fillerImageSection {
+  width: 100%;
+  height: auto;
+  margin-top: 10vw;
+  margin-bottom: 10vw;
+
+}
+
+/*HOWWORKS   HOWWORKS   HOWWORKS   HOWWORKS   HOWWORKS   HOWWORKS*/
+
+
+#homePage>.howWorks {
+  width: 100%;
+  height: 120vw;
+  display: grid;
+  margin-bottom: 10vw;
+  align-items: center;
+  justify-items: center;
+  grid-template-rows: 1fr 9fr;
+  position: relative;
+  z-index: 1;
+
+}
+
+#homePage>.howWorks>:first-child {
+  text-align: center;
+  width: 28vw;
+  margin-bottom: 10vw;
+}
+
+#homePage>.howWorks>:first-child>h2 {
+  font-size: 2.4vw;
+}
+
+#homePage>.howWorks>:first-child>h3 {
+  margin: 1vw 0;
+}
+
+#homePage>.howWorks>:first-child>p {
+  font-weight: 300;
+  font-size: 0.9vw;
+}
+
+#homePage>.howWorks>:last-child {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10vw 7vw;
+
+}
+
+#homePage>.howWorks .arrows {
+  position: absolute;
+  width: 3vw;
+  height: auto;
+
+}
+
+#homePage>.howWorks #arrow1 {
+  top: 37vw;
+  left: 34vw;
+}
+
+#homePage>.howWorks #arrow2 {
+  top: 37vw;
+  left: 62vw;
+}
+
+
+#homePage>.howWorks #arrow3 {
+  top: 71vw;
+  left: 62vw;
+}
+
+
+#homePage>.howWorks #arrow4 {
+  top: 71vw;
+  left: 34vw;
+}
+
+#homePage>.howWorks #arrow5 {
+  width: 1.7vw;
+  top: 85vw;
+  left: 20vw;
+}
+
+#homePage>.howWorks #arrow6 {
+  top: 104vw;
+  left: 34vw;
+}
+
+#homePage>.howWorks #arrow7 {
+  top: 104vw;
+  left: 62vw;
+}
+
+#homePage>.howWorks .modalWorks {
+  position: absolute;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5vw;
+  padding: 2vw;
+  z-index: 3;
+
+}
+
+#homePage>.howWorks #arrowRestart {
+  width: 70%;
+  height: auto;
+  left: 22vw;
+  top: 20vw;
+  position: absolute;
+}
+
+
+#homePage>.howWorks #friendly {
+  background-color: var(--quadraryColor);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5vw;
+  padding: 2vw;
+  top: 23vw;
+  left: 5vw;
+  width: 20vw;
+  height: 6vw;
+
+}
+
+#homePage>.howWorks #friendly>p {
+  font-size: 1.4vw;
+}
+
+#homePage>.howWorks #establish {
+  background-color: var(--primaryColor);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5vw;
+  padding: 1.5vw;
+  top: 52vw;
+  right: 8.5vw;
+  width: 17vw;
+  height: 6vw;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2vw;
+  align-items: center;
+  justify-items: center;
+  color: var(--quadraryColor);
+}
+
+#homePage>.howWorks #establish>p {
+  font-size: 1.2vw;
+  font-weight: 300;
+}
+
+#homePage>.howWorks #establish>img {
+  width: 3.5vw;
+  height: auto;
+}
+
+
+#homePage>.howWorks #stage4 {
+  background-color: var(--primaryColor);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5vw;
+  padding: 1vw;
+  top: 66vw;
+  right: 2.2vw;
+  width: 9vw;
+  height: 0.2vw;
+  color: var(--quadraryColor);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transform: rotate(-90deg);
+}
+
+#homePage>.howWorks #stage4>p {
+  font-size: 0.8vw;
+}
+
+#homePage>.howWorks #stage4>img {
+  filter: invert(1);
+  width: 1.5vw;
+  height: auto;
+}
+
+
+/*QUESTIONS   QUESTIONS   QUESTIONS  QUESTIONS   QUESTIONS   QUESTIONS   QUESTIONS  QUESTIONS   QUESTIONS   QUESTIONS   QUESTIONS  QUESTIONS*/
+
+
+#homePage>.questions {
+  width: 100%;
+  height: 70vw;
+  background-color: var(--quadraryColor);
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+
+#homePage>.questions h2 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1vw;
+}
+
+#homePage>.questions h3 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 4vw;
+}
+
+#homePage>.questions ul {
+  list-style: url("../svg/plusIcon.svg");
+  width: 45%;
+  padding: 0 30vw;
+}
+
+#homePage>.questions ul ::marker {
+  margin-right: 2vw;
+}
+
+#homePage>.questions li {
+  margin-bottom: 2vw;
+  font-weight: 500;
+  padding-left: 2vw;
+}
+
+
+
+/*CASESTUDIES   CASESTUDIES   CASESTUDIES   CASESTUDIES   CASESTUDIES   CASESTUDIES   CASESTUDIES*/
+
+#homePage>.caseStudies {
+  background-color: #11142c;
+  color: var(--quadraryColor);
+  height: 130vw;
+}
+
+#homePage>.caseStudies h2 {
+  text-align: center;
+  font-size: 3vw;
+  padding-top: 6vw;
+}
+
+
+#homePage>.caseStudies h3 {
+  font-size: 2vw;
+  margin-bottom: 2vw;
+}
+
+#homePage>.caseStudies p {
+  margin-bottom: 2vw;
+}
+
+#homePage>.caseStudies>.case {
+  display: flex;
+  width: 80%;
+  padding: 0 10vw;
+  margin-bottom: 10vw;
+  margin-top: 10vw;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 7vw;
+}
+
+#homePage>.caseStudies>.case>div>:first-child {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+}
+
+#homePage>.caseStudies>.case>div>:first-child>:first-child {
+  display: grid;
+  height: 90%;
+}
+
+#homePage>.caseStudies>.case>div>:first-child>:first-child>div {
+  display: flex;
+  align-items: center;
+}
+
+#homePage>.caseStudies>.case>div>:first-child>:first-child>div p {
+  width: 10vw;
+}
+
+#homePage>.caseStudies .descriptionHolder>p {
+  font-size: 1vw;
+  font-weight: 400;
+  line-height: 1.4vw;
+}
+
+#homePage>.caseStudies .descriptionHolder>a {
+  display: block;
+  background: rgb(102, 0, 255);
+  background: linear-gradient(146deg, rgba(102, 0, 255, 1) 0%, rgba(225, 0, 255, 1) 100%);
+  padding: 1vw 1.2vw;
+  border-radius: 2vw;
+  text-align: center;
+  width: 6vw;
+  color: var(--quadraryColor);
+  font-size: 1vw;
+
 }

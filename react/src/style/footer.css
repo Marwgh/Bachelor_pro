@@ -1,0 +1,103 @@
+footer {
+  background-color: black;
+  color: var(--quadraryColor);
+  width: 100%;
+  height: 40vw;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer h3 {
+  margin-bottom: 2vw;
+}
+
+footer li {
+  list-style: none;
+  font-weight: 200;
+  margin-bottom: 1vw;
+}
+
+footer p {
+  font-size: 1vw;
+}
+
+footer>:first-child {
+  display: flex;
+  height: 33vw;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+footer>:first-child>:not(:first-child) {
+  margin-top: 7vw;
+}
+
+footer .smallDescription {
+  width: 18vw;
+  height: 100%;
+}
+
+footer .smallDescription p {
+  font-weight: 400;
+
+}
+
+footer .learnMore {
+  background-color: black;
+  color: var(--quadraryColor);
+  border: 1px solid var(--quadraryColor);
+  font-size: 1vw;
+  margin-top: 3vw;
+  width: 13vw;
+}
+
+footer .smallDescription img {
+  width: 7vw;
+  height: auto;
+  padding: 4vw 0;
+}
+
+footer>:last-child {
+  border-top: 1px solid white;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  align-items: center;
+  justify-items: center;
+  height: 7vw;
+  width: 100%;
+
+}
+
+
+footer .installAppFooter {
+  display: flex;
+  justify-content: space-around;
+  width: 20vw;
+}
+
+footer .installAppFooter img {
+  height: 2vw;
+  width: auto;
+}
+
+footer .copyright {
+  grid-column: 1/3;
+}
+
+footer .notice {
+  grid-column: 4/5;
+}
+
+footer .policy {
+  grid-column: 5/6;
+}
+
+footer .conditions {
+  grid-column: 6/7;
+}
+
+footer>:last-child div {
+  grid-column: 8/10;
+}
