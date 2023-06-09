@@ -50,7 +50,7 @@ export default function Signup() {
 
   }
   return (
-    <div className="signup-section">
+    <main id="signupPage">
       <div>
         <form onSubmit={onSubmit}>
         <h1>
@@ -59,24 +59,37 @@ export default function Signup() {
         {errors && <div className="alert">
 
           {Object.keys(errors).map(key => (
-            <p key={key}>{errors[key][0]}</p>
+            <p className="errorMessage" key={key}>{errors[key][0]}</p>
           ))}
         </div>
 
         }
-        <input ref={nameRef} type="text" placeholder="Name"  />
-        <input ref={emailRef} type="email" placeholder="email"  />
-        {/* <input ref={companyRef} type="text" placeholder="Company"  /> */}
-        {/* <input ref={jobRef} type="text" placeholder="job"  /> */}
-        {/* <input ref={phoneRef} type="tel" placeholder="+00 000 000"  /> */}
-        <input ref={passwordRef} type="password" placeholder="password"  />
-        <input ref={passwordConfirmRef} type="password" placeholder="password Confirmation"  />
-        <button type="submit" className="signupSubBtn">Signup</button>
+        <div>
+          <label htmlFor="">Full Name</label>
+          <input ref={nameRef} type="text" placeholder="Name"  />
+        </div>
+        <div>
+          <label htmlFor="">Email</label>
+          <input ref={emailRef} type="email" placeholder="email"  />
+        </div>
+        <div>
+          <label htmlFor="">Password</label>
+          <input ref={passwordRef} type="password" placeholder="password"  />
+        </div>
+        <div>
+          <label htmlFor="">Password Confirmation</label>
+          <input ref={passwordConfirmRef} type="password" placeholder="password Confirmation"  />
+        </div>
+        
+        <button type="submit" className="button">Signup</button>
         <p>
-          Allready registered, <Link to="/login">Sign in</Link>
+          Allready registered, <Link to="/login" >Sign in</Link>
         </p>
         </form>
       </div>
-    </div>
+      <div>
+        <img src="images/fillerSL.png" alt="" />
+      </div>
+    </main>
   )
 }

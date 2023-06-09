@@ -12,7 +12,7 @@ export default function SecondaryLayout() {
 
   
   return (
-    <div>
+    <>
       <nav>
       <Link to='/home' className="logoNav" > <img src="../svg/logo.svg" alt="Endors Finass Logo" /></Link>
       <div className="linkHolder1">
@@ -22,15 +22,15 @@ export default function SecondaryLayout() {
         <Link to="#">Get started</Link>
       </div>
       <div className="linkHolder2">
-        <Link className="button" to="/signup">Sign up</Link>
+        <Link className="button" to="/login">Sign in</Link>
         <Link className="learnMore" to="#"><img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" /> Learn more about our approach</Link>
       </div>
       
       </nav>
-      <div>
+      <>
       <Outlet/>
-      </div>
+      </>
       <Footer/>
-    </div>
+    </>
   )
 }

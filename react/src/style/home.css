@@ -558,7 +558,7 @@
 /*CASESTUDIES   CASESTUDIES   CASESTUDIES   CASESTUDIES   CASESTUDIES   CASESTUDIES   CASESTUDIES*/
 
 #homePage>.caseStudies {
-  background-color: #11142c;
+  background-color: var(--darkBlue);
   color: var(--quadraryColor);
   height: 130vw;
 }

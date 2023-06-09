@@ -28,7 +28,7 @@ export default function DefaultLayout() {
     })
   },[])
   return (
-    <div id="defaultLayout">
+    <>
       <nav>
       <Link to='/home' className="logoNav"> <img src="../svg/logo.svg" alt="Endors Finass Logo" /></Link>
         <div className="linkHolder1">
@@ -52,16 +52,16 @@ export default function DefaultLayout() {
           {user.name}
           <a className="logoutBtn" onClick={onLogout} href="#">Logout</a>
         </div>
-        <main>
+        <>
           <Outlet/>
-        </main>
+        </>
       </div>
       {notification && 
       <div>
       {notification}
     </div>}
     <Footer/>
-    </div>
+    </>
 
   )
 }

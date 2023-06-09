@@ -1,0 +1,47 @@
+#blogPage>header {
+  width: 100%;
+  height: 30vw;
+  background-image: url("../images/fillerEight.png");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#blogPage>header h1 {
+  color: var(--quadraryColor);
+}
+
+/*SINGUPCTA     SINGUPCTA     SINGUPCTA     SINGUPCTA     SINGUPCTA     SINGUPCTA     SINGUPCTA   */
+
+#blogPage>.signUpCta {
+  width: 100%;
+  height: 35vw;
+  background-image: url("../images/bannerBlog.png");
+  background-size: cover;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 4vw;
+}
+
+#blogPage>.signUpCta>p {
+  color: var(--quadraryColor);
+  font-size: 2.4vw;
+  font-weight: 300;
+  width: 50vw;
+}
+
+#blogPage>.signUpCta>div {
+  display: flex;
+  width: 50vw;
+  justify-content: space-around;
+}
+
+#blogPage>.signUpCta input {
+
+  padding: 0.7vw;
+  border-radius: 0.3vw;
+  border: 1px solid black;
+  width: 27vw;
+}

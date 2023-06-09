@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../axios-client.js";
 import { useStateContext } from "../context/contextProvider";
+import { Link } from "react-router-dom";
+import ContactForm from "./item/contactForm.jsx";
+
 
 
 export default function Blog() {
@@ -53,7 +56,35 @@ export default function Blog() {
 
 
   return (
-    <main>
+    <main id="blogPage">
+      <header>
+        <h1>Endorfinas Blog </h1>
+      </header>
+      <section className="signUpCta">
+        <p>Subscribe to Endorfinas blog to get regular updates on latest marketing trends and how to stand out from your compotetitors</p>
+        <div>
+          <input type="text" placeholder="emailexample@email.com" />
+          <Link to="#" className="button">Update me on the lastest </Link>
+        </div>
+      </section>
+      
+      <section>
+      {posts && !loading &&
+      <div>
+        {posts?.map(post=>(
+          <div key={post.post_id}>
+            <h1>{post.post_title}</h1>
+            <p>{post.post_text}</p>
+          </div>
+        ))}
+      </div>
+      }
+      {loading && 
+        <div>
+          Loading ...
+        </div>
+      }
+      </section>
       {token &&
         <div>
             <div>
@@ -82,21 +113,8 @@ export default function Blog() {
             </form>
         </div>
       }
-      {posts && !loading &&
-      <div>
-        {posts?.map(post=>(
-          <div key={post.post_id}>
-            <h1>{post.post_title}</h1>
-            <p>{post.post_text}</p>
-          </div>
-        ))}
-      </div>
-      }
-      {loading && 
-        <div>
-          Loading ...
-        </div>
-      }
+      <ContactForm/>
+      
     </main>
   )
 }

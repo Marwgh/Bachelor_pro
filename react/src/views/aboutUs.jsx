@@ -1,33 +1,62 @@
+import ClientFeedBack from "./item/clientFeedBack";
+import ReasonsWhy from "./item/reasonsWhy";
+import Counter from "./item/counter";
+import { Link } from "react-router-dom";
+import TeamMember from "./item/teamMember";
+import ContactForm from "./item/contactForm";
+
 export default function AboutUs() {
 
   return(
-    <main>
+    <main id="aboutUsPage">
       <header>
         <h1>About us</h1>
       </header>
-      <section>
+      <section className="understand">
         <div>
-          <p>At Endorfinas Media, we understand that achieving marketing goals can be complex.</p>
-          <p>That’s why we’ve developed a four-phase 9-step roadmap to help all our clients succeed.</p>
+          <p>At Endorfinas Media, we understand that achieving marketing goals can be complex.<br/><br/>
+          That’s why we’ve developed a four-phase 9-step roadmap to help all our clients succeed.
+          </p>
         </div>
         <div>
-          <img src="" alt="" />
+          <img src="images/fillerNine.png" alt="" />
         </div>
       </section>
-      {/*Compnetns*/}
-      <section>
-        <img src="" alt="" />
-      </section>
-      <section>
+      <Counter/>
+      <img className="fillerImageSection" src="../images/fillerTen.png" alt="" />
+      <section className="values">
         <h2>Company values </h2>
         <div>
-          {/*Compnetn*/}
+          <ReasonsWhy 
+          title={"Transparency"} 
+          Icon={"../svg/smilingIcon.svg"} 
+          text={"Maintaining open and clear lines of communication with both team members and clients to ensure effective problem-solving at all times."}/>
+          <ReasonsWhy 
+          title={"Comittment"} 
+          Icon={"../svg/happyIcon.svg"} 
+          text={"As Peter F. Drucker said, “Unless commitment is made, there are only promises and hopes, but no plans.” That’s why we ensure that we are fully committed to our work by developing structured plans and strategies"}/>
+          <ReasonsWhy 
+          title={"Comittment"} 
+          Icon={"../svg/smirkIcon.svg"} 
+          text={"As Peter F. Drucker said, “Unless commitment is made, there are only promises and hopes, but no plans.” That’s why we ensure that we are fully committed to our work by developing structured plans and strategies"}/>
+          <ReasonsWhy 
+          title={"Self-improvment"} 
+          Icon={"../svg/singIcon.svg"} 
+          text={"Maintaining open and clear lines of communication with both team members and clients to ensure effective problem-solving at all times."}/>
+          <ReasonsWhy 
+          title={"Over-deliver"} 
+          Icon={"../svg/coolIcon.svg"} 
+          text={"Our goal is not just to meet expectations, but to exceed them. We strive to over-deliver and surpass any standard or benchmark in the market."}/>
+          <ReasonsWhy 
+          title={"Company Motto"} 
+          Icon={"../svg/congratulationsIcon.svg"} 
+          text={"Our company’s guiding principle is to always strive for greatness, maintain passion in our work, foster a curious mindset, and approach everything with humility. This is encapsulated in our motto: “Be Great, Be Passionate, Be Curious, Be Humble.”"}/>
         </div>
-        <button>
+        <Link to="#" className="button">
         Claim your free website audit
-        </button>
+        </Link >
       </section>
-      <section>
+      <section className="passion">
         <h2>A Team with passion</h2>
         <div>
           <p>Our goal is to help companies with marketing needs worldwide achieve success through effective online traffic and marketing strategies. 
@@ -41,25 +70,24 @@ export default function AboutUs() {
             attainment of your goals.</p>
         </div>
       </section>
-      <section>
+      <section className="certificates">
         <h2>Data Protection Qualifications & Certificates</h2>
         <p>We prioritize security& protection </p>
         <div>
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
+          <img src="images/certificates.png" alt="certificates" />
         </div>
       </section>
-      <section>
+      <section className="videoAboutUs">
         <h2>About us</h2>
         <p>2 min video</p>
-        <video src=""></video>
+        {/* <video src=""></video> */}
+        <p>In comming ...</p>
         <p>Marketing  |  InfinityGrowth  |  Sales Accelerator </p>
-        <button>
+        <Link to="#" className="button">
         Claim your free website audit
-        </button>
+        </Link> 
       </section>
-      <section>
+      <section className="services">
         <h2>Services</h2>
         <p>Endorfinas Infinity Growth & Sales Accelerator service! 
         This blueprint is designed to help companies fully unlock their growth potential in a short period of time.</p>
@@ -72,59 +100,120 @@ export default function AboutUs() {
         <p>
         We’re excited to work with you and take your business to the next level!
         </p>
-        {/*Compnetn*/}
-        <button>
+        <div>
+        <ReasonsWhy 
+        title={"Phase 1"} 
+        Icon={"../svg/targetUserIcon.svg"} 
+        text={"We conduct an in-depth market analysis to evaluate your current position and understand your target audience."}/>
+        <ReasonsWhy 
+        title={"Phase 2"} 
+        Icon={"../svg/targetIcon.svg"} 
+        text={"We use these insights to create a tailored strategy for your business"}/>
+        <ReasonsWhy 
+        title={"Phase 3"} 
+        Icon={"../svg/planningIcon.svg"} 
+        text={"We combine automation with a human touch to generate qualified leads and convert them into paying customers."}/>
+        <ReasonsWhy 
+        title={"Phase 4"} 
+        Icon={"../svg/growthIcon.svg"} 
+        text={"We optimize performance through ongoing analysis and adjustments to ensure maximum results.With this comprehensive approach, we can provide a clear and organized path for achieving your sales & marketing goals."}/>
+        </div>
+      <Link to="#" className="button">
         Claim your free website audit
-        </button>
+      </Link>
       </section>
       <section>
+        
+      </section>
+      <section className="team">
         <h2>The team that makes it all happen </h2>
         <div>
-          {/*Compnetn*/}
+          <TeamMember
+          image={"../images/employeeOne.png"}
+          name={"Marc Campos"}
+          job={"Senior Copywriter"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeTwo.png"}
+          name={"Nicolas Falvo"}
+          job={"Senior Graphic Designer"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeThree.png"}
+          name={"Maria Minguez"}
+          job={"UX Designer Copywriter"}
+          quote={" This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeFour.png"}
+          name={"Oji Pettersson"}
+          job={"Senior Technial Consultant"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeOne.png"}
+          name={"Nestor Palou"}
+          job={"Senior Video Creator"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeTwo.png"}
+          name={"Katrina Dargel"}
+          job={"Senior UX consultant Business Strategist"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeThree.png"}
+          name={"Robert Leon"}
+          job={"Founder - Media Strategist Media Buyer"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeFour.png"}
+          name={"Cristian Angel"}
+          job={"Senior Brand Consultant"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeOne.png"}
+          name={"Jordan Kotas"}
+          job={"Social Media Manager"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeTwo.png"}
+          name={"Kayla Squelch"}
+          job={"Senior Media buyer Copywriter"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeThree.png"}
+          name={"Miguel Santafe"}
+          job={"Senior Producer"}
+          quote={"This is a personal quite long quote"}
+          />
+          <TeamMember
+          image={"../images/employeeFour.png"}
+          name={"Carlos Clusa"}
+          job={"Senior Digital Creator"}
+          quote={"This is a personal quite long quote"}
+          />
         </div>
       </section>
-      <section>
-        {/*Make component*/}
-      </section>
-      <section>
+      <ClientFeedBack/>
+      <section className="exploreBlog">
         <h2>Explore our magic blog </h2>
-        <img src="" alt="" />
-        <h3>How to Use A/B testing to validate your resutls</h3>
-        <p>A/B testing might not be common practice... </p>
-        {/*tags*/}
-        <button>Read more blog posts </button>
-      </section>
-      <section>
-        <h2>Contact us</h2>
-      </section>
-      <section>
         <div>
-          <form action="">
-            <div>
-              <label htmlFor="">Name</label>
-              <input type="text" name="" id="" />
-            </div>
-            <div>
-              <label htmlFor="">Email </label>
-              <input type="text" name="" id="" />
-            </div>
-            <div>
-              <label htmlFor="">Phone</label>
-              <input type="text" name="" id="" />
-            </div>
-            <div>
-              <label htmlFor="">Message </label>
-              <textarea name="" id="" cols="30" rows="10"></textarea>
-            </div>
-            <div>
-              <label htmlFor="">Yes i agree to Endorfinas privacy policy </label>
-              <input type="checkbox" name="" id="" />
-            </div>
-            <button>Send</button>
-          </form>
+          <img src="images/postFiller.png" alt="" />
+          <h3>How to Use A/B testing to validate your resutls</h3>
+          <p>A/B testing might not be common practice... </p>
+          {/*tags*/}  
         </div>
-        <div></div>
+        <Link to="/blog" className="button">Read more blog posts </Link>
       </section>
+      <ContactForm/>
     </main>
   )
 }

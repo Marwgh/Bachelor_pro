@@ -1,0 +1,33 @@
+#signupPage {
+  display: flex;
+  height: 60vw;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#signupPage img {
+  width: 50vw;
+  height: auto;
+}
+
+#signupPage h1 {
+  text-align: center;
+  font-weight: 300;
+}
+
+#signupPage>:first-child {
+  width: 25vw;
+}
+
+#signupPage .button {
+  width: 100%;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  border-radius: 0.5vw;
+  font-weight: 700;
+}
+
+#signupPage a {
+  color: var(--primaryColor);
+}

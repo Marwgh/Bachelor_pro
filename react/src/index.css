@@ -1,5 +1,9 @@
 @import url('style/nav.css');
 @import url('style/home.css');
+@import url('style/aboutUs.css');
+@import url('style/blog.css');
+@import url('style/login.css');
+@import url('style/signup.css');
 @import url('style/footer.css');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -10,6 +14,7 @@
   --quadraryColor: white;
   --whiteSpace: #F3F3F3;
   --buttonColor: #1df198;
+  --darkBlue: #11142c;
 
 }
 
@@ -57,6 +62,30 @@ p {
   font-weight: 500;
 }
 
+
+form div {
+  display: grid;
+}
+
+
+
+form label {
+  margin-bottom: 1vw;
+  margin-top: 1.5vw;
+  font-size: 1.1vw;
+  font-weight: 600;
+}
+
+form input {
+  padding: 0.7vw;
+  border-radius: 0.3vw;
+  border: 1px solid black;
+}
+
+form .button {
+  border: none;
+}
+
 .button {
   display: block;
   background-color: var(--buttonColor);
@@ -67,7 +96,15 @@ p {
 
 .button:hover {
   filter: brightness(1.15);
+  cursor: pointer;
 }
+
+.errorMessage {
+  color: red;
+  margin-top: 1vw;
+}
+
+
 
 .learnMore {
   display: flex;
@@ -111,6 +148,8 @@ p {
   position: absolute;
   left: 1vw;
   top: 2vw;
+  height: auto;
+  width: 1.5vw;
 }
 
 #ReasonsWhyCard h3 {
@@ -360,4 +399,114 @@ p {
 #counter p {
   color: var(--primaryColor);
   font-size: 2.5vw;
+}
+
+#teamMember {
+  width: 15vw;
+  height: 12vw;
+  position: relative;
+}
+
+#teamMember img {
+  position: absolute;
+  top: -4vw;
+  left: 4vw;
+  width: 7vw;
+  height: auto;
+}
+
+#teamMember>div {
+  background-color: var(--quadraryColor);
+  border-radius: 0.5vw;
+  height: 12vw;
+  padding: 2vw 2vw;
+  display: grid;
+  text-align: center;
+}
+
+#teamMember>div>h3 {
+  margin-top: 2vw;
+}
+
+#teamMember>div>p {
+  font-size: 0.8vw;
+  color: var(--primaryColor);
+}
+
+#teamMember>div>q {
+  font-size: 0.9vw;
+
+}
+
+#contactForm {
+  display: flex;
+  height: 60vw;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+#contactForm h2 {
+  position: absolute;
+  top: 7vw;
+  font-size: 2.8vw;
+}
+
+#contactForm>:first-child {
+  width: 40vw;
+  height: 35vw;
+}
+
+#contactForm form {
+  display: grid;
+  justify-items: center;
+}
+
+
+#contactForm form>div {
+  display: grid;
+  width: 100%;
+}
+
+#contactForm form .checkHolder {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  align-items: center;
+}
+
+#contactForm form .checkHolder input {
+  height: 2vw;
+  width: 2vw;
+}
+
+
+
+
+#contactForm>:last-child {
+  display: grid;
+  justify-items: start;
+  align-items: center;
+  width: 30vw;
+  height: 22vw;
+}
+
+#contactForm>:last-child>* {
+  margin-bottom: 2vw;
+}
+
+#contactForm>:last-child iframe {
+  width: 100%;
+  height: 20vw;
+  border: 1px solid black;
+  border-radius: 0.5vw;
+}
+
+
+#contactForm>:last-child div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }

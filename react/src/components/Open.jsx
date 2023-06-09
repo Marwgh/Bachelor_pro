@@ -22,7 +22,7 @@ export default function OpenLayout() {
 
   
   return (
-    <div> 
+    <> 
       <nav>
         {user.admin &&
         <Link to="/dashboard">dashboard</Link>
@@ -46,12 +46,12 @@ export default function OpenLayout() {
 
       </nav>
 
-      <div>
+      <>
       <Outlet/>
-      </div>
+      </>
       <Footer/>
 
-    </div>
+    </>
 
   )
 }
