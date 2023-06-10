@@ -26,13 +26,14 @@ export default function Signup() {
     const payload = {
       name :nameRef.current.value,
       email :emailRef.current.value,
-      // company :companyRef.current.value,
-      // job :jobRef.current.value,
-      // phone :phoneRef.current.value,
+      company :"no answers",
+      job :"no answers",
+      phone :"no answers",
       password :passwordRef.current.value,
       password_confirmation :passwordConfirmRef.current.value
     }
     console.log(payload);
+    
     
     axiosClient.post('/signup', payload)
     .then((data)=>{

@@ -1,0 +1,124 @@
+#quizzPage>header {
+  width: 100%;
+  height: 30vw;
+  background-image: url("../images/fillerEight.png");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1vw
+}
+
+#quizzPage>header h1 {
+  color: var(--quadraryColor);
+}
+
+#quizzPage>div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 80vw;
+}
+
+
+#quizzPage>div img {
+  width: 50vw;
+  height: auto;
+}
+
+
+#quizzPage form {
+  width: 30vw;
+}
+
+#quizzPage .button {
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  border-radius: 0.5vw;
+  font-weight: 700;
+}
+
+#quizzPage a {
+  color: var(--primaryColor);
+}
+
+#quizzPage h2 {
+  width: 100%;
+  text-align: center;
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+}
+
+/*QUIZZ   QUIZZ   QUIZZ   QUIZZ   QUIZZ   QUIZZ   QUIZZ*/
+
+
+
+#quizzPage form {
+  height: 40vw;
+}
+
+#quizzPage form .stepTwo {
+  display: none;
+
+}
+
+#quizzPage form .stepThree {
+  display: none;
+}
+
+#quizzPage form .stepFour {
+  display: none;
+}
+
+#quizzPage form .stepFive {
+  display: none;
+}
+
+#quizzPage form fieldset {
+  border: none;
+  width: 35vw;
+  display: grid;
+  gap: 1vw;
+}
+
+#quizzPage form fieldset h3 {
+  text-align: center;
+}
+
+#quizzPage form input[type="radio"] {
+  width: 2vw;
+  height: auto;
+  border-radius: 0;
+  margin-left: 3vw;
+}
+
+#quizzPage form .stepTwo>div:not(.button) {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2vw;
+  width: 100%;
+}
+
+#quizzPage form .stepThree>div:not(.button) {
+  display: grid;
+  gap: 2vw;
+  grid-template-columns: 3fr 1fr;
+}
+
+#quizzPage form .stepFour>div:not(.button) {
+  display: grid;
+  gap: 2vw;
+  grid-template-columns: 3fr 1fr;
+}
+
+#quizzPage form .stepFive>:last-of-type {
+  display: grid;
+  gap: 2vw;
+  grid-template-columns: 3fr 1fr;
+}
+
+#quizzPage .quizzDone {
+  display: grid;
+  gap: 2vw;
+  padding: 2vw;
+}

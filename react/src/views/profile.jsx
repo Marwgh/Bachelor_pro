@@ -1,34 +1,45 @@
 import { useStateContext } from "../context/contextProvider";
+import axiosClient from "../axios-client";
 
 
 export default function Profile() {
-  const {user, setUser} = useStateContext()
+  const {user, setUser,setToken} = useStateContext()
 
   
-
+  const onLogout = (ev) => {
+    ev.preventDefault();
+    axiosClient.post('/logout').then(()=>{
+      setUser({})
+      setToken(null)
+    })
+  }
   return (
-    <div>
+    <main id="profilePage">
       <h1>
-        Name : {user.name}
+        Hello {user.name}
       </h1>
       <p>
         Email : {user.email}
       </p>
       {user.company !== "no answers" &&
         <p>
-          {user.company}
+          Your company : {user.company}
         </p>
       }
       {user.phone !== "no answers" &&
         <p>
-          {user.phone}
+          Your phone : {user.phone}
         </p>
       }
       {user.job !== "no answers" &&
         <p>
-          {user.job}
+          Your job : {user.job}
         </p>
       }
-    </div>
+      <div>
+          
+          <a className="button" onClick={onLogout} href="#">Logout</a>
+        </div>
+    </main>
   )
 }

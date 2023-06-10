@@ -20,9 +20,9 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'job' => '',
-            'phone' => '',
-            'company' => '',
+            'job' => $data['job'],
+            'phone' => $data['phone'],
+            'company' => $data['company'],
             'user_points' =>isset( $data['user_points']) ? $data['user_points']: 0 ,
         ]);
 

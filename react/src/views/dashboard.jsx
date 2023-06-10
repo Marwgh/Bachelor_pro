@@ -9,8 +9,11 @@ export default function Dashboard() {
   const [showModal, setShowModal] = useState(false);
   const [loading,setLoading] = useState(false);
   const {setNotification} = useStateContext();
-  const [userId,setUserId] = useState(null);
+  const [userEmail,setUserEmail] = useState(null);
   const [quizzs,setQuizzs] = useState([]);
+  const [userPage,setUserPage] = useState(0)
+  
+
   useEffect( () => {
     getUers();
   }, [])
@@ -29,27 +32,52 @@ export default function Dashboard() {
   const getUers = () => {
     setLoading(true)
     axiosClient.get('/users').then(({data})=> {
-      setUsers(data)
+      setUsers(sliceIntoChunks(data,5))
       setLoading(false)
+      
+      
     }).catch(()=>{
       setLoading(false)
     })
   }
   function openModal(user) {
     setShowModal (true);
-    setUserId(user.id);
+    setUserEmail(user.email);
     axiosClient.get('/quizz').then(({data})=> {
       setQuizzs(data)
-
     })
-
   }
+  function sliceIntoChunks(arr, chunkSize) {
+    const res = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+        const chunk = arr.slice(i, i + chunkSize);
+        res.push(chunk);
+    }
+    return res;
+}
+
+
+  const length = users.length;
+
+  const nextSlide = () => {
+    setUserPage(userPage === length - 1 ? 0 : userPage + 1);
+  };
+
+  const prevSlide = () => {
+    setUserPage(userPage === 0 ? length - 1 : userPage - 1);
+  };
+
+  
+
+
+  console.log(userPage)
+  
 
   return (
-    <div>
+    <main id="dashboardPage">
       <div>
         <h1>Users</h1>
-        <Link to={"/users/new"}>Add new</Link>
+        <Link className="button" to={"/users/new"}>Add new User / Staff</Link>
       </div>
       <table>
         <thead>
@@ -65,7 +93,8 @@ export default function Dashboard() {
             <th>ACTION</th>
           </tr>
         </thead>
-        {loading && <tbody>
+        {loading && 
+        <tbody>
           
           <tr>
             <td colSpan="5">
@@ -74,36 +103,53 @@ export default function Dashboard() {
           </tr>
         </tbody>
         }
-        {!loading && <tbody>
-          {users.map(u=>(
-            
-            <tr key={u.id}>
-              <td>{u.id}</td>
-              <td>{u.name}</td>
-              <td>{u.email}</td>
-              <td>{u.created_at}</td>
-              <td>{u.user_points}</td>
-              <td>{u.company}</td>
-              <td>{u.job}</td>
-              <td>{u.phone}</td>
-              <td>
-                <Link to={'/users/'+u.id} >Edit</Link>
-                <button onClick={ev => onDelete(u)} >Delete</button>
-                <button onClick={ev => openModal(u)}>Open info</button>
-              </td>
-            
-            </tr>
-          ))
-          }
-        </tbody>
-
+        {!loading && 
+        <>
+          {users.map((a,index)=>(
+            <>
+            {index === userPage &&
+            <tbody  key={"tbodyN"+index}>
+              <tr className="pageNumber">
+                <td>{index}</td>
+              </tr>
+              {a.map((u,Tindex)=>(
+                <tr key={"trN"+Tindex}>
+                  <td>{u.id}</td>
+                  <td>{u.name}</td>
+                  <td>{u.email}</td>
+                  <td>{u.created_at}</td>
+                  <td>{u.user_points}</td>
+                  <td>{u.company}</td>
+                  <td>{u.job}</td>
+                  <td>{u.phone}</td>
+                  <td>
+                    <Link className="button" to={'/users/'+u.id} >Edit</Link>
+                    <button className="button" onClick={ev => onDelete(u)} >Delete</button>
+                    <button className="button" onClick={ev => openModal(u)}>Open info</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            }
+            </>
+          ))}
+          </>
         }
         
+        
       </table>
+
+      {!loading &&
+      <div className="slideBtnHolder">
+        <div className="slideButtons" onClick={()=>nextSlide()  }>Next</div>
+        <div className="slideButtons" onClick={()=> prevSlide()  }>Previous</div>
+      </div>
+      }
+      
       {showModal &&
-        <UserInforModale userId={userId} setShowModal={setShowModal} quizzs={quizzs} />
+        <UserInforModale userEmail={userEmail} setShowModal={setShowModal} quizzs={quizzs} />
 
         }
-    </div>
+    </main>
   )
 }

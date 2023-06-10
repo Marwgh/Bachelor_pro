@@ -22,7 +22,7 @@ class QuizzController extends Controller
     public function index()
     {
         return response( QuizzResource::collection(
-            Quizz::query()->orderBy('quizz_id','desc')->paginate(10)
+            Quizz::query()->orderBy('quizz_id','desc')->get()
         ),200 );
     }
 
@@ -36,7 +36,7 @@ class QuizzController extends Controller
 
         $data = $request->validated();
         $quizz = Quizz::create([
-            'user_id' => $data['user_id'],
+            'user_email' => $data['user_email'],
             'quizz_name' => $data['quizz_name'],
             'user_paragraph' => $data['user_paragraph'],
             'team_desciption' => $data['team_desciption'],

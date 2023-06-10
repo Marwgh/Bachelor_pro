@@ -11,7 +11,7 @@ class Quizz extends Model
     protected $table = 'quizz';
     protected $fillable = [
         'quizz_name',
-        'user_id',
+        'user_email',
         'user_paragraph',
         'team_desciption',
         'income',

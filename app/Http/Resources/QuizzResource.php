@@ -17,7 +17,7 @@ class QuizzResource extends JsonResource
     {
         return [
             'quizz_id'=> $this->quizz_id,
-            'user_id'=> $this->user_id,
+            'user_email'=> $this->user_email,
             'quizz_name'=> $this->quizz_name,
             'user_paragraph'=> $this->user_paragraph,
             'team_desciption'=> $this->team_desciption,

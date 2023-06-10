@@ -1,0 +1,16 @@
+#profilePage {
+  height: 60vw;
+  display: grid;
+  padding: 5vw;
+}
+
+#profilePage p {
+  display: block;
+  background-color: var(--quadraryColor);
+  width: 25vw;
+  height: fit-content;
+  padding: 1vw 2vw;
+  border-radius: 0.2vw;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+}

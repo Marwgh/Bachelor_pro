@@ -298,7 +298,7 @@
 
 #homePage>.potential>.lastStage>img {
   border-radius: 0.5vw;
-  height: 100%;
+  height: 17vw;
 }
 
 #homePage>.potential>.lastStage>div>.stage {
@@ -588,6 +588,10 @@
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 7vw;
+}
+
+#homePage>.caseStudies>.case img {
+  width: 25vw;
 }
 
 #homePage>.caseStudies>.case>div>:first-child {

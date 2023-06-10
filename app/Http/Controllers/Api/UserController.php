@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         return response( UserResource::collection(
-            User::query()->orderBy('id','desc')->paginate(10)
+            User::query()->orderBy('id','asc')->get()
         ),200 );
     }
 
@@ -28,6 +28,7 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data['password'] = bcrypt($data['password']);
+        $data['user_points'] =isset( $data['user_points']) ? $data['user_points']: 0 ;
         $user = User::create($data);
 
         return response(new UserResource($user) , 201);

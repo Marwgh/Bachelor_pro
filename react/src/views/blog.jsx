@@ -68,23 +68,31 @@ export default function Blog() {
         </div>
       </section>
       
-      <section>
-      {posts && !loading &&
-      <div>
-        {posts?.map(post=>(
-          <div key={post.post_id}>
-            <h1>{post.post_title}</h1>
-            <p>{post.post_text}</p>
-          </div>
-        ))}
-      </div>
-      }
-      {loading && 
+      <section className="blogsList">
+        <h2>All Posts</h2>
+        {posts && !loading &&
         <div>
-          Loading ...
+          {posts?.map(post=>(
+            <div key={post.post_id}>
+              {post.post_image == "no answers" &&
+                <img src="images/postFiller.png" alt="" />
+              }
+              <h3>{post.post_title}</h3>
+              <p>{post.post_text}</p>
+              {/*tags */}
+              <Link to="#">Read Post</Link>
+            </div>
+          ))}
         </div>
-      }
+        }
+        {loading && 
+          <div>
+            Loading ...
+          </div>
+        }
       </section>
+
+
       {token &&
         <div>
             <div>

@@ -7,7 +7,7 @@ import Footer from "../views/item/footer";
 
 
 export default function OpenLayout() {
-  const {user, token ,setUser,setToken} = useStateContext()
+  const {user, token ,setUser} = useStateContext()
 
   if(token){
     useEffect( () => {
@@ -24,15 +24,16 @@ export default function OpenLayout() {
   return (
     <> 
       <nav>
-        {user.admin &&
-        <Link to="/dashboard">dashboard</Link>
-        }
+        
         <Link to='/home' className="logoNav"> <img src="../svg/logo.svg" alt="Endors Finass Logo" /></Link>
         <div className="linkHolder1">
           <Link to="/aboutUs">About Us</Link>
           <Link to="/quizz">Quizz</Link>
           <Link to="/blog">Blog</Link>
           <Link to="#">Get started</Link>
+          {user.admin &&
+        <Link to="/dashboard">dashboard</Link>
+        }
         </div>
         <div className="linkHolder2">
           {!token &&

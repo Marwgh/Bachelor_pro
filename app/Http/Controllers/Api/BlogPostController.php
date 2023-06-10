@@ -17,7 +17,7 @@ class BlogPostController extends Controller
     public function index()
     {
         return response( BlogPostResource::collection(
-            BlogPost::query()->orderBy('post_id','desc')->paginate(10)
+            BlogPost::query()->orderBy('post_id','desc')->get()
         ),200 );
     }
 

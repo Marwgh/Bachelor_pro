@@ -224,6 +224,11 @@
 
 }
 
+#aboutUsPage>.exploreBlog img {
+  width: 40vw;
+  height: auto;
+}
+
 #aboutUsPage>.exploreBlog h3 {
   margin: 1vw 0;
   font-size: 1.2vw;

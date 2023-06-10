@@ -34,13 +34,21 @@ export default function UserForm() {
 
   const onSubmit = ev => {
     ev.preventDefault()
-    
+    if (!user.job || user.job.length < 2) {
+      user.job = "no answers"
+    }
+    if  (!user.phone || user.phone.length < 2) {
+      user.phone = "no answers"
+    }
+    if ( !user.company || user.company.length < 2) {
+      user.company = "no answers"
+    }
     if (user.id) {
       axiosClient.put(`/users/${user.id}`, user)
         .then(() => {
           
           setNotification('User was successfully updated')
-          navigate('/users')
+          navigate('/dashboard')
         })
         .catch(err => {
           const response = err.response;
@@ -49,10 +57,10 @@ export default function UserForm() {
           }
         })
     } else {
-      axiosClient.post('/user', user)
+      axiosClient.post('/users', user)
         .then(() => {
           setNotification('User was successfully created')
-          navigate('/users')
+          navigate('/dashboard')
         })
         .catch(err => {
           const response = err.response;

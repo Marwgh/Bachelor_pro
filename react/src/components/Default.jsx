@@ -6,18 +6,12 @@ import Footer from "../views/item/footer";
 
 
 export default function DefaultLayout() {
-  const {user, token, notification ,setUser,setToken} = useStateContext()
+  const {user, token, notification ,setUser} = useStateContext()
   if(!token){
     return <Navigate to="/login"/>
   }
 
-  const onLogout = (ev) => {
-    ev.preventDefault();
-    axiosClient.post('/logout').then(()=>{
-      setUser({})
-      setToken(null)
-    })
-  }
+  
 
   useEffect( () => {
     axiosClient.get('/user').then(({data})=>{
@@ -46,12 +40,8 @@ export default function DefaultLayout() {
         </div>
       </nav>
       <div className="content">
-        <div>
-        </div>
-        <div>
-          {user.name}
-          <a className="logoutBtn" onClick={onLogout} href="#">Logout</a>
-        </div>
+        
+        
         <>
           <Outlet/>
         </>

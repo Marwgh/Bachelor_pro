@@ -2,6 +2,9 @@
 @import url('style/home.css');
 @import url('style/aboutUs.css');
 @import url('style/blog.css');
+@import url('style/profile.css');
+@import url('style/quizz.css');
+@import url('style/dashboard.css');
 @import url('style/login.css');
 @import url('style/signup.css');
 @import url('style/footer.css');
@@ -62,6 +65,10 @@ p {
   font-weight: 500;
 }
 
+li {
+  font-size: 1vw;
+}
+
 
 form div {
   display: grid;
@@ -80,10 +87,12 @@ form input {
   padding: 0.7vw;
   border-radius: 0.3vw;
   border: 1px solid black;
+  font-size: 1vw;
 }
 
 form .button {
   border: none;
+  font-size: 1vw;
 }
 
 .button {
@@ -440,7 +449,7 @@ form .button {
 
 #contactForm {
   display: flex;
-  height: 60vw;
+  height: 70vw;
   width: 100%;
   align-items: center;
   justify-content: space-around;

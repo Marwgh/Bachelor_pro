@@ -30,7 +30,7 @@ export default function ContactForm() {
         <h2>Contact us</h2>
 
         <div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.0270417702923!2d2.1874389766280893!3d41.39521909550848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3e143f22eb9%3A0x3cb5812d6b40f831!2sEndorfinas%20Media!5e0!3m2!1sen!2sdk!4v1686304115129!5m2!1sen!2sdk"  allowfullscreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.0270417702923!2d2.1874389766280893!3d41.39521909550848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3e143f22eb9%3A0x3cb5812d6b40f831!2sEndorfinas%20Media!5e0!3m2!1sen!2sdk!4v1686304115129!5m2!1sen!2sdk"  allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           <div>
             <img src="../svg/locaIcon.svg" alt="" />
             <p>C. de Pallars, 94, 08018 Barcelona, Spain</p>
