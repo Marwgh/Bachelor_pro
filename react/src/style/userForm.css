@@ -1,0 +1,13 @@
+#userFormPage {
+  height: 60vw;
+  padding: 5vw;
+}
+
+#userFormPage form {
+  width: 50vw;
+}
+
+#userFormPage form .button {
+  margin-top: 2vw;
+  float: right;
+}

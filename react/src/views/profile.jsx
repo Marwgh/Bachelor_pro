@@ -1,5 +1,6 @@
 import { useStateContext } from "../context/contextProvider";
 import axiosClient from "../axios-client";
+import { Link } from "react-router-dom";
 
 
 export default function Profile() {
@@ -37,8 +38,8 @@ export default function Profile() {
         </p>
       }
       <div>
-          
-          <a className="button" onClick={onLogout} href="#">Logout</a>
+          <Link className="button" to={'/users/'+user.id} >Edit</Link>
+          <Link className="button" onClick={onLogout}>Logout</Link>
         </div>
     </main>
   )

@@ -81,6 +81,7 @@
   display: flex;
   width: 87vw;
   justify-content: space-between;
+  margin-top: 3vw;
 }
 
 #dashboardPage .slideButtons {
@@ -93,4 +94,39 @@
   width: 6vw;
   color: var(--quadraryColor);
   font-size: 1.2vw;
+  cursor: pointer;
+
+}
+
+#dashboardPage #userInforModale {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80vw;
+  height: 100vh;
+  backdrop-filter: brightness(0.5);
+  padding: 10vh 10vw;
+}
+
+#dashboardPage #userInforModale>div {
+  background-color: var(--quadraryColor);
+  border-radius: 0.5vw;
+  padding: 3vw;
+  height: 40vw;
+  position: relative;
+}
+
+#dashboardPage #userInforModale>div .button {
+  border: none;
+  margin-bottom: 0.5vw;
+  font-size: 1vw;
+  font-weight: 500;
+  position: absolute;
+  right: 2vw;
+  top: 2vw;
+}
+
+#dashboardPage #userInforModale>div p {
+  padding-top: 2vw;
+  padding-left: 2vw;
 }

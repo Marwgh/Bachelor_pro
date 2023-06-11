@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate,Link, useParams } from "react-router-dom"
 import axiosClient from "../axios-client";
 import {useStateContext} from "../context/ContextProvider.jsx";
 
@@ -16,12 +16,12 @@ export default function UserForm() {
   const [errors, setErrors] = useState(null)
   const [loading, setLoading] = useState(false)
   const {setNotification} = useStateContext()
-
+  
   if (id) {
     useEffect(() => {
       
       setLoading(true)
-      axiosClient.get(`/user/${id}`)
+      axiosClient.get(`/users/${id}`)
         .then(({data}) => {
           setLoading(false)
           setUser(data)
@@ -72,9 +72,9 @@ export default function UserForm() {
   }
 
   return (
-    <>
-      {user.id && <h1>Update User: {user.firstName} </h1>}
-      {!user.id && <h1>New staff</h1>}
+    <main id="userFormPage">
+      {user.id && <h1>{user.name} </h1>}
+      {!user.id && <h1>New staff / User</h1>}
       <div className="card animated fadeInDown">
         {loading && (
           <div className="text-center">
@@ -84,20 +84,36 @@ export default function UserForm() {
         {errors &&
           <div className="alert">
             {Object.keys(errors).map(key => (
-              <p key={key}>{errors[key][0]}</p>
+              <p className="errorMessage" key={key}>{errors[key][0]}</p>
             ))}
           </div>
         }
         {!loading && (
           <form onSubmit={onSubmit}>
-            <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder="first Name"/>
+            <div>
+              <label htmlFor="">Name</label>
+            <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder="Name"/>
+            </div>
+            <div>
+              <label htmlFor="">Email</label>
             <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
+            </div>
+            <div>
+              <label htmlFor="">Password</label>
             <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password"/>
+            </div>
+            <div>
+              <label htmlFor="">Password Confirmation</label>
             <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Password Confirmation"/>
-            <button className="btn">Save</button>
+            </div>
+            <div>
+              <Link className="button" onClick={()=> navigate(-1)}>Cancel</Link>
+              <button className="button">Save</button>  
+            </div>
           </form>
         )}
+        
       </div>
-    </>
+    </main>
   )
 }

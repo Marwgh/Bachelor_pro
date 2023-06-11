@@ -54,7 +54,7 @@ export default function Dashboard() {
         res.push(chunk);
     }
     return res;
-}
+  }
 
 
   const length = users.length;

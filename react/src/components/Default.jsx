@@ -8,8 +8,14 @@ import Footer from "../views/item/footer";
 export default function DefaultLayout() {
   const {user, token, notification ,setUser} = useStateContext()
   if(!token){
-    return <Navigate to="/login"/>
+    return <Navigate to="/home"/>
   }
+
+  if(window.location.pathname == "/"){
+    return <Navigate to="/home"/>
+  }
+
+  
 
   
 

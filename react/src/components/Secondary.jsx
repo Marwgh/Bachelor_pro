@@ -9,6 +9,9 @@ export default function SecondaryLayout() {
   if (token) {
     return <Navigate to="/home"/>
   }
+  if(window.location.pathname == "/"){
+    return <Navigate to="/home"/>
+  }
 
   
   return (

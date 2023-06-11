@@ -5,29 +5,30 @@ export default function UserInforModale(props) {
   const email = props.userEmail
   const setShowModal = props.setShowModal
   let quizzCounter = 0
+  console.log(quizzs)
   return(
-  <div>
+  <div id='userInforModale'>
+    <div>
     <p>
-      Quizz taken : {quizzCounter}
+      <strong>Quizz taken</strong> : {quizzCounter}
     </p>
     {quizzs.map((q) =>{
       
       if (q.user_email === email) {
         quizzCounter += 1
         return <div key={"key"}>
-        <p>{q.quizz_name}</p>
-        <p>{q.user_paragraph}</p>
-        <p>{q.team_desciption}</p>
-        <p>{q.income}</p>
-        <p>{q.recruitment_type}</p>
-        <p>{q.created_at}</p>
-        <p>{q.updated_at}</p>
+        <p><strong>Quizz name</strong> : {q.quizz_name}</p>
+        <p><strong>User text answer</strong> : {q.user_paragraph}</p>
+        <p><strong>team descrition</strong> : {q.team_desciption}</p>
+        <p><strong>Iconme range</strong> : {q.income}</p>
+        <p><strong>Favorite recruitment type</strong> : {q.recruitment_type}</p>
       </div>
       }
     })
     }
     
-    <button onClick={ev => setShowModal(false)}>Close</button>
+    <button className='button' onClick={ev => setShowModal(false)}>Close</button>
+    </div>
 
     
   </div>

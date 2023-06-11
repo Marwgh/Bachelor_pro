@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate,Outlet } from "react-router-dom";
 import { useStateContext } from "../context/contextProvider";
 import { useEffect } from "react";
 import axiosClient from "../axios-client";
@@ -8,7 +8,9 @@ import Footer from "../views/item/footer";
 
 export default function OpenLayout() {
   const {user, token ,setUser} = useStateContext()
-
+  if(window.location.pathname == "/"){
+    return <Navigate to="/home"/>
+  }
   if(token){
     useEffect( () => {
       axiosClient.get('/user').then(({data})=>{

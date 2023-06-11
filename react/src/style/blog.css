@@ -53,13 +53,14 @@
 
 
 #blogPage>.blogsList {
-  height: 60vw;
+  height: 80vw;
   display: grid;
   justify-items: center;
   align-items: center;
+  position: relative;
 }
 
-#blogPage>.blogsList>div {
+#blogPage>.blogsList .page {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4vw;
@@ -68,7 +69,7 @@
 }
 
 
-#blogPage>.blogsList>div>div {
+#blogPage>.blogsList .page>div {
   background-color: var(--quadraryColor);
   padding: 1vw;
   border-radius: 0.5vw;
@@ -92,7 +93,7 @@
   font-size: 0.8vw;
 }
 
-#blogPage>.blogsList a {
+#blogPage>.blogsList .page a {
   font-size: 0.8vw;
   padding: 1vw 3vw;
   position: absolute;
@@ -100,4 +101,74 @@
   bottom: 0vw;
   text-decoration: underline;
   color: var(--primaryColor);
+}
+
+#blogPage>.blogsList .page h4 {
+  position: absolute;
+  bottom: 4vw;
+  left: 45vw;
+  font-size: 2vw;
+  font-weight: 700;
+  color: var(--primaryColor);
+}
+
+#blogPage>.blogsList .slideBtnHolder {
+  display: flex;
+  width: 70vw;
+  justify-content: space-between;
+  margin-top: 3vw;
+}
+
+#blogPage>.blogsList .slideButtons {
+  display: block;
+  background: rgb(102, 0, 255);
+  background: linear-gradient(146deg, rgba(102, 0, 255, 1) 0%, rgba(225, 0, 255, 1) 100%);
+  padding: 1vw 1.2vw;
+  border-radius: 2vw;
+  text-align: center;
+  width: 6vw;
+  color: var(--quadraryColor);
+  font-size: 1.2vw;
+  cursor: pointer;
+}
+
+
+#blogPage .postingSection {
+  width: 80vw;
+  height: 50vw;
+  padding: 0 10vw;
+  display: grid;
+  justify-content: center;
+}
+
+#blogPage .postingSection form {
+  width: 45vw;
+  height: 40vw;
+  background-color: var(--quadraryColor);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 1vw 5vw;
+  border-radius: 1vw;
+}
+
+#blogPage .postingSection form .button {
+  margin-top: 1vw;
+}
+
+#blogPage .postingSection form input[type="file"] {
+  display: none;
+}
+
+#blogPage .postingSection form label[for="fileInput"] {
+  display: block;
+  background: rgb(102, 0, 255);
+  background: linear-gradient(146deg, rgba(102, 0, 255, 1) 0%, rgba(225, 0, 255, 1) 100%);
+  filter: grayscale(0.8);
+  pointer-events: none;
+  padding: 1vw 1.2vw;
+  border-radius: 2vw;
+  text-align: center;
+  width: 6vw;
+  color: var(--quadraryColor);
+  font-size: 1.2vw;
+  cursor: pointer;
 }
