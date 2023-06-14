@@ -3,6 +3,13 @@
   padding: 5vw;
 }
 
+#dashboardPage .sorters {
+  display: flex;
+  width: 30vw;
+  justify-content: space-around;
+  margin-bottom: 1vw;
+}
+
 #dashboardPage table {
   background-color: var(--quadraryColor);
   border-collapse: collapse;

@@ -37,7 +37,9 @@ class BlogPostController extends Controller
      */
     public function show(BlogPost $blogPost)
     {
-        //
+        return response( 
+            BlogPost::latest()->first()
+        ,200 );
     }
 
     /**
@@ -53,6 +55,8 @@ class BlogPostController extends Controller
      */
     public function destroy(BlogPost $blogPost)
     {
-        //
+        $blogPost->delete();
+
+        return response("",204);
     }
 }

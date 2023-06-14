@@ -15,16 +15,30 @@ export default function Blog() {
     post_title: '',
     post_text:'',
     post_image: '' ,
-  })
+})
+  const [tagsNpost,setTagsNpost] = useState([])
+  const [tags, setTags] = useState([])
+  const [newPostTags, setNewPostTags] = useState([])
   const [postsPage, setpostsPage] = useState(0);
   const [posts,setPosts] = useState([]);
+  const [tempPostId, setTempPostId] = useState("");
+  const length = posts.length;
+  
+
+  const onDelete = (p) => {
+    if (!window.confirm(`Delete post ${p.post_title}?`)){
+      return
+    }
+
+    axiosClient.delete(`/blogPost/${p.post_id}`)
+  }
+  
   const onSubmit = ev => {
     ev.preventDefault()
-    onFileUpload()
     if (!blogPost.post_image || blogPost.post_image.length < 2) {
       blogPost.post_image = "no answers"
     }
-
+    setLoading(true)
     axiosClient.post(`/blogPost`, blogPost )
         .then(() => {
         })
@@ -34,24 +48,69 @@ export default function Blog() {
             setErrors(response.data.errors)
           }
         }).then(()=>{
-          axiosClient.get('getPosts').then(({data})=>{      
-            setPosts(sliceIntoChunks(data,6))
-            setLoading(false)
+          axiosClient.get(`/getPost`,  blogPost)
+          .then(({data}) => {
+            setTempPostId(data.post_id)
           }).catch(err => {
             const response = err.response;
             if (response && response.status === 422) {
               setErrors(response.data.errors)
-              setLoading(false)
-      
             }
+          })}).then(()=>{
+            axiosClient.get('getPosts').then(({data})=>{      
+              setPosts(sliceIntoChunks(data,6))
+            }).catch(err => {
+              const response = err.response;
+              if (response && response.status === 422) {
+                setErrors(response.data.errors)
+        
+              }
+            })
           })
-        })
+
+          
+          
 
   }
-  const length = posts.length;
+
+  useEffect(()=> {
+    if (tempPostId) {
+      newPostTags.forEach(postTag => {
+      
+    
+        const tagPostRelation = {
+          'tag_id':postTag.tag_id,
+          'post_id':tempPostId,
+        }
+        console.log(tagPostRelation)
+        axiosClient.post("/TagsNPosts",tagPostRelation).then(() => {
+  
+        })
+        .catch(err => {
+          const response = err.response;
+          if (response && response.status === 422) {
+            setErrors(response.data.errors)
+  
+          }
+        }).then(()=>{
+          axiosClient.get('/seeTagsNPosts').then(({data})=>{
+            setTagsNpost(data)
+            setLoading(false)
+          })
+        })
+      
+    })
+  
+    }
+  if(newPostTags.length == 0){
+    setLoading(false)
+  }
+  }, [tempPostId])
+
+
   useEffect(() => {
     setLoading(true)
-    axiosClient.get('getPosts').then(({data})=>{      
+    axiosClient.get('/getPosts').then(({data})=>{      
       setPosts(sliceIntoChunks(data,6))
       setLoading(false)
     }).catch(err => {
@@ -62,12 +121,19 @@ export default function Blog() {
 
       }
     })
-    
+    axiosClient.get('/seeTags').then(({data})=>{
+      setTags(data)
+      console.log(tags)
+    })
+    axiosClient.get('/seeTagsNPosts').then(({data})=>{
+      setTagsNpost(data)
+    })
   }, [])
 
   useEffect(()=> {
     setBlogPost({...blogPost, user_id:user.id})
   }, [user])
+  
   function sliceIntoChunks(arr, chunkSize) {
     const res = [];
     for (let i = 0; i < arr.length; i += chunkSize) {
@@ -84,17 +150,25 @@ export default function Blog() {
     setpostsPage(postsPage === 0 ? length - 1 : postsPage - 1);
   };
 
-
-    const onFileUpload = () => {
-
+  const addTagToPost = (tag_id , event) => {
+    console.log( event.target)
+    console.log(newPostTags.some(t => t.tag_id === tag_id))
     
-    // console.log(blogPost.post_image);
-    // file.mv("images" ,  blogPost.post_image)
-    // fetch('uploads/' + encodeURIComponent(blogPost.post_image), {method:'PUT',body:blogPost.post_image});
-};
+    if (newPostTags.some(t => t.tag_id === tag_id) == false) {
+      setNewPostTags([...newPostTags , ...[ {'tag_id': tag_id,}]])
+        event.target.style.color="white"
+
+    } else if (newPostTags.some(t => t.tag_id === tag_id) == true) {
+      setNewPostTags(newPostTags.filter(t => t.tag_id !== tag_id))
+      event.target.style.color="black"
+
+    } 
+      
+    
+    
+    
+  }
   
-
-
   return (
     <main id="blogPage">
       <header>
@@ -113,7 +187,7 @@ export default function Blog() {
               {errors &&
                 <div className="alert">
                   {Object.keys(errors).map(key => (
-                  <p key={key}>{errors[key][0]}</p>
+                  <p key={"error"+key}>{errors[key][0]}</p>
                   ))}
                 </div>
               }
@@ -132,6 +206,14 @@ export default function Blog() {
                 <p>{blogPost.post_image}</p>
                 <input onChange={ev => setBlogPost({...blogPost, post_image: ev.target.files[0].name})} type="file" accept="image/png, image/jpeg" name="" id="fileInput" />
               </div>
+              <div className="tagHolder">
+                {tags.map((t,index)=>(
+                  <div onClick={ev => addTagToPost(t.id , ev)} className="tag button" key={"tagNF"+index}>
+                    {t.tag_text}
+                  </div>
+                ))}
+                
+              </div>
               <button className="button">Post</button>
             </form>
         </section>
@@ -144,7 +226,7 @@ export default function Blog() {
           {posts.map((post,pageIndex)=>(
             <>
             {pageIndex === postsPage &&
-            <div className="page" key={"pageN"+pageIndex}>
+            <div className="page" key={"pageN"+pageIndex+"postsPage"}>
             <h4>Page : {pageIndex}</h4>
 
             {post.map((p,postIndex)=>(
@@ -157,8 +239,44 @@ export default function Blog() {
                 }
                 <h3>{p.post_title}</h3>
                 <p>{p.post_text}</p>
-                {/*tags */}
-                <Link to="#">Read Post</Link>
+                <div className="postTagsHolder">
+                  {tagsNpost &&
+                    <>
+                    {tagsNpost.map(TNP => (
+                      <>
+                      
+                      {TNP.post_id == p.post_id &&
+                        <>
+                        
+                        {tags.map((tagP,tagPIndex)=>(
+                          <>
+                          {tagP.id == TNP.tag_id &&
+                          
+                          <div key={"tagPostBlog"+tagPIndex} className="postTags slideButtons">
+                            
+                            {tagP.tag_text}
+                            
+                          </div>
+                          }
+                          </>
+                        ))}
+                        </>
+                        }
+                      </>
+                    ))
+                      
+                        
+                      
+                      
+                    
+                    }
+                    </>
+                  }
+                </div>
+                <Link className="readPost" to="#">Read Post</Link>
+                {user.email == "admin@admin.com" &&
+                <Link  onClick={ev => onDelete(p)} >Delete</Link>
+                }
               </div>
               ))
             }
@@ -170,8 +288,8 @@ export default function Blog() {
         }
         {!loading &&
       <div className="slideBtnHolder">
-        <div className="slideButtons" onClick={()=>nextSlide()  }>Next</div>
         <div className="slideButtons" onClick={()=> prevSlide()  }>Previous</div>
+        <div className="slideButtons" onClick={()=>nextSlide()  }>Next</div>
       </div>
       }
         {loading && 

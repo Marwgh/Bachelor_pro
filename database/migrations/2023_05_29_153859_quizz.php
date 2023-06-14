@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('quizz', function (Blueprint $table) {
             $table->id('quizz_id');
-            // $table->increments('user_id');
+            $table->increments('user_email');
             $table->string('quizz_name');
             $table->string('user_paragraph');
             $table->string('team_desciption');

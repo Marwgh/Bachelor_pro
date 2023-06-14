@@ -339,11 +339,11 @@ export default function Quizz() {
         </div>
         <div>
         <label htmlFor="">Password</label>
-        <input type="text" onChange={ev => setUser({...user, password: ev.target.value})} />
+        <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} />
         </div>
         <div>
         <label htmlFor="">Password Confirmation</label>
-        <input type="text" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} />
+        <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} />
         </div>
         <div>
         <div className="button" onClick={() => {changeStep("back4")}}>Back</div>

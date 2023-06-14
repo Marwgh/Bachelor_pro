@@ -64,7 +64,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4vw;
-  height: 45vw;
+  height: 55vw;
 
 }
 
@@ -74,10 +74,26 @@
   padding: 1vw;
   border-radius: 0.5vw;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  height: 22vw;
+  height: 25vw;
+  width: 20vw;
   position: relative;
 }
 
+#blogPage>.blogsList .page .postTagsHolder {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  overflow-x: hidden;
+  padding: 0.5vw 0;
+  align-items: center;
+}
+
+#blogPage>.blogsList .page .postTagsHolder .postTags {
+  font-size: 0.7vw;
+  padding: 0.5vw 1vw;
+  margin-right: 1vw;
+  width: 8vw;
+}
 
 #blogPage>.blogsList img {
   width: 20vw;
@@ -97,10 +113,14 @@
   font-size: 0.8vw;
   padding: 1vw 3vw;
   position: absolute;
-  left: 6vw;
+  left: 15vw;
   bottom: 0vw;
   text-decoration: underline;
   color: var(--primaryColor);
+}
+
+#blogPage>.blogsList .page .readPost {
+  left: 6vw;
 }
 
 #blogPage>.blogsList .page h4 {
@@ -143,12 +163,21 @@
 
 #blogPage .postingSection form {
   width: 45vw;
-  height: 40vw;
+  height: 45vw;
   background-color: var(--quadraryColor);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 1vw 5vw;
   border-radius: 1vw;
 }
+
+#blogPage .postingSection form .tagHolder {
+  display: flex;
+  width: 100%;
+  padding: 1vw 1vw;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
 
 #blogPage .postingSection form .button {
   margin-top: 1vw;

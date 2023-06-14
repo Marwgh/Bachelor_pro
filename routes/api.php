@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\QuizzController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\BlogPostController;
+use App\Http\Controllers\Api\Tag_PostController;
+use App\Http\Controllers\Api\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +28,18 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('/users', UserController::class );
     Route::apiResource('/quizz', QuizzController::class );
     Route::apiResource('/blogPost', BlogPostController::class );
-
+    Route::apiResource('/Tags', TagController::class );
+    Route::apiResource('/TagsNPosts', Tag_PostController::class );
+    // 
+    
 
 });
 
 Route::get('/getPosts', [BlogPostController::class , 'index'] );
+Route::get('/getPost', [BlogPostController::class , 'show'] );
 Route::post('/signup' , [AuthController::class , 'signup']);
 Route::post('/login' , [AuthController::class , 'login']);
 Route::post('/quizz' , [QuizzController::class , 'create']);
+Route::get('/seeTags', [TagController::class, 'index' ]);
+Route::get('/seeTagsNPosts', [Tag_PostController::class , 'index'] );
 

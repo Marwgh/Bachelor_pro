@@ -11,7 +11,8 @@ export default function Dashboard() {
   const {setNotification} = useStateContext();
   const [userEmail,setUserEmail] = useState(null);
   const [quizzs,setQuizzs] = useState([]);
-  const [userPage,setUserPage] = useState(0)
+  const [userPage,setUserPage] = useState(0);
+  const [chunkedUsers,setChunkedUsers] = useState([])
   
 
   useEffect( () => {
@@ -32,7 +33,8 @@ export default function Dashboard() {
   const getUers = () => {
     setLoading(true)
     axiosClient.get('/users').then(({data})=> {
-      setUsers(sliceIntoChunks(data,5))
+      setUsers(data)
+      setChunkedUsers(sliceIntoChunks(data,5))
       setLoading(false)
       
       
@@ -57,7 +59,7 @@ export default function Dashboard() {
   }
 
 
-  const length = users.length;
+  const length = chunkedUsers.length;
 
   const nextSlide = () => {
     setUserPage(userPage === length - 1 ? 0 : userPage + 1);
@@ -67,10 +69,23 @@ export default function Dashboard() {
     setUserPage(userPage === 0 ? length - 1 : userPage - 1);
   };
 
+  const filterCompany = () => { 
+    const sorting = [...users].sort((a, b) => a.user_points < b.user_points ? 1 : -1,);
+    setChunkedUsers(
+      sliceIntoChunks(sorting,5)
+    )
+  }
+
+  const filterPoints = () => {
+    const sorting = [...users].sort((a, b) => a.company < b.company ? 1 : -1,);
+    setChunkedUsers(
+      sliceIntoChunks(sorting,5)
+    )
+  }
   
-
-
+  console.log(chunkedUsers)
   console.log(userPage)
+
   
 
   return (
@@ -78,6 +93,11 @@ export default function Dashboard() {
       <div>
         <h1>Users</h1>
         <Link className="button" to={"/users/new"}>Add new User / Staff</Link>
+        <div className="sorters"> 
+          <h2>Filter:</h2>
+          <div className="button" onClick={()=> filterCompany()}>points</div>
+          <div className="button" onClick={()=> filterPoints()}>company</div>
+        </div>
       </div>
       <table>
         <thead>
@@ -105,7 +125,7 @@ export default function Dashboard() {
         }
         {!loading && 
         <>
-          {users.map((a,index)=>(
+          {chunkedUsers.map((a,index)=>(
             <>
             {index === userPage &&
             <tbody  key={"tbodyN"+index}>
@@ -113,7 +133,9 @@ export default function Dashboard() {
                 <td>{index}</td>
               </tr>
               {a.map((u,Tindex)=>(
-                <tr key={"trN"+Tindex}>
+                <>
+                {u.email !== "admin@admin.com" &&
+                  <tr key={"trN"+Tindex}>
                   <td>{u.id}</td>
                   <td>{u.name}</td>
                   <td>{u.email}</td>
@@ -128,6 +150,8 @@ export default function Dashboard() {
                     <button className="button" onClick={ev => openModal(u)}>Open info</button>
                   </td>
                 </tr>
+                }
+                </>
               ))}
             </tbody>
             }
@@ -141,8 +165,8 @@ export default function Dashboard() {
 
       {!loading &&
       <div className="slideBtnHolder">
-        <div className="slideButtons" onClick={()=>nextSlide()  }>Next</div>
         <div className="slideButtons" onClick={()=> prevSlide()  }>Previous</div>
+        <div className="slideButtons" onClick={()=>nextSlide()  }>Next</div>
       </div>
       }
       

@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blogPosts', function (Blueprint $table) {
-            $table->id('post_id');
-            $table->string('post_title');
-            $table->string('post_text');
-            $table->string('post_image');
-            $table->timestamps();
+        Schema::create('tags', function (Blueprint $table) {
+            $table->id('tag_id');
+            $table->string('tag_link');
         });
     }
 

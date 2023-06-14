@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BlogPostResource extends JsonResource
+class Tag_PostResource extends JsonResource
 {
     public static $wrap = false;
     /**
@@ -17,13 +17,7 @@ class BlogPostResource extends JsonResource
     {
         return [
             'post_id'=> $this->post_id,
-            'user_id'=> $this->user_id,
-            'post_title'=> $this->post_title,
-            'post_text'=> $this->post_text,
-            'post_image'=> $this->post_image,
-            'created_at'=> $this->created_at->format('Y-m-d H:i:s'),
-
-            
+            'tag_id'=> $this->tag_id,
         ];
 
     }
