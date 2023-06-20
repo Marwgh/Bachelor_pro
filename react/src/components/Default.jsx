@@ -26,7 +26,10 @@ export default function DefaultLayout() {
       }
       setUser(data)
     })
+  console.log(notification)
+
   },[])
+
   return (
     <>
       <nav>
@@ -53,9 +56,12 @@ export default function DefaultLayout() {
         </>
       </div>
       {notification && 
+      <div className="notification">
       <div>
       {notification}
-    </div>}
+      </div>
+    </div>
+    }
     <Footer/>
     </>
 

@@ -6,6 +6,7 @@ import {useStateContext} from "../context/ContextProvider.jsx";
 
 export default function Dashboard() {
   const [users,setUsers] = useState([]);
+  const [errors, setErrors] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [loading,setLoading] = useState(false);
   const {setNotification} = useStateContext();
@@ -20,13 +21,18 @@ export default function Dashboard() {
   }, [])
 
   const onDelete = (u) => {
-    if (!window.confirm(`Delete user ${u.firstName}?`)){
+    if (!window.confirm(`Delete user ${u.name}?`)){
       return
     }
 
     axiosClient.delete(`/users/${u.id}`).then(()=>{
-      setNotification(`user ${u.firstName} deleted`)
+      setNotification(`user ${u.name} deleted`)
       getUers()
+    }).catch(err => {
+      const response = err.response;
+      if (response && response.status === 422) {
+        setErrors(response.data.errors)
+      }
     })
   }
 
@@ -47,6 +53,11 @@ export default function Dashboard() {
     setUserEmail(user.email);
     axiosClient.get('/quizz').then(({data})=> {
       setQuizzs(data)
+    }).catch(err => {
+      const response = err.response;
+      if (response && response.status === 422) {
+        setErrors(response.data.errors)
+      }
     })
   }
   function sliceIntoChunks(arr, chunkSize) {
@@ -83,8 +94,7 @@ export default function Dashboard() {
     )
   }
   
-  console.log(chunkedUsers)
-  console.log(userPage)
+  
 
   
 
@@ -99,6 +109,13 @@ export default function Dashboard() {
           <div className="button" onClick={()=> filterPoints()}>company</div>
         </div>
       </div>
+      {errors &&
+                <div className="errorMessage">
+                  {Object.keys(errors).map(key => (
+                  <p key={"error"+key}>{errors[key][0]}</p>
+                  ))}
+                </div>
+      }
       <table>
         <thead>
           <tr>

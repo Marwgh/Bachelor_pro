@@ -7,7 +7,7 @@ import Footer from "../views/item/footer";
 
 
 export default function OpenLayout() {
-  const {user, token ,setUser} = useStateContext()
+  const {user, token, notification ,setUser} = useStateContext()
   if(window.location.pathname == "/"){
     return <Navigate to="/home"/>
   }
@@ -52,6 +52,13 @@ export default function OpenLayout() {
       <>
       <Outlet/>
       </>
+      {notification && 
+      <div className="notification">
+      <div>
+      {notification}
+      </div>
+    </div>
+}   
       <Footer/>
 
     </>

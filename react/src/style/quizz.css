@@ -122,3 +122,9 @@
   gap: 2vw;
   padding: 2vw;
 }
+
+#quizzPage .alert {
+  position: absolute;
+  right: 33vw;
+  top: 80vw;
+}

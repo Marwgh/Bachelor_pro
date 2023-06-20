@@ -6,7 +6,7 @@ import ContactForm from "./item/contactForm.jsx";
 
 
 export default function Blog() {
-  const { user,token } = useStateContext()
+  const { user,token,setNotification } = useStateContext()
   const [loading,setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
   const [blogPost , setBlogPost] = useState({
@@ -30,7 +30,12 @@ export default function Blog() {
       return
     }
 
-    axiosClient.delete(`/blogPost/${p.post_id}`)
+    axiosClient.delete(`/blogPost/${p.post_id}`).catch(err => {
+      const response = err.response;
+      if (response && response.status === 422) {
+        setErrors(response.data.errors)
+      }
+    })
   }
   
   const onSubmit = ev => {
@@ -148,6 +153,8 @@ export default function Blog() {
   };
   const prevSlide = () => {
     setpostsPage(postsPage === 0 ? length - 1 : postsPage - 1);
+    
+
   };
 
   const addTagToPost = (tag_id , event) => {
@@ -183,16 +190,17 @@ export default function Blog() {
       </section>
       {token &&
         <section className="postingSection">
+           
+            <form onSubmit={onSubmit}>
             <div>
               {errors &&
-                <div className="alert">
+                <div className="errorMessage">
                   {Object.keys(errors).map(key => (
                   <p key={"error"+key}>{errors[key][0]}</p>
                   ))}
                 </div>
               }
             </div>
-            <form onSubmit={onSubmit}>
               <div>
                 <label htmlFor="">Title</label>
                 <input type="text"  onChange={ev => setBlogPost({...blogPost, post_title: ev.target.value})} />

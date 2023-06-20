@@ -39,6 +39,8 @@ export default function Quizz() {
       }).then(()=>{
         axiosClient.get('/quizz').then(({data})=> {
           setQuizzs(data)
+          
+
         })
         
       })
@@ -163,7 +165,7 @@ export default function Quizz() {
 
   },[user.name,user.email,user.phone,quizzAnswer.user_paragraph])
     
-
+  
   return (
     <main id="quizzPage">
       <header>
@@ -181,7 +183,7 @@ export default function Quizz() {
       {hasQuizz==false && !loading  &&
       <form onSubmit={onSubmit}>
         {errors &&
-          <div className="alert">
+          <div className="alert errorMessage">
             {Object.keys(errors).map(key => (
               <p className="errorMessage" key={key}>{errors[key][0]}</p>
             ))}
