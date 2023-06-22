@@ -24,7 +24,7 @@ class StoreBlogPostRequest extends FormRequest
         return [
                 'user_id' => ['required'],
                 'post_title' => ['required', 'string'],
-                'post_text' => ['required', 'string'],
+                'post_text' => ['required', 'string', 'max:40'],
                 'post_image' => 'string' ,
         ];
     }

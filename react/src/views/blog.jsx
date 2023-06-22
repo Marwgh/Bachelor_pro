@@ -26,11 +26,24 @@ export default function Blog() {
   
 
   const onDelete = (p) => {
+    setLoading(true)
     if (!window.confirm(`Delete post ${p.post_title}?`)){
       return
     }
 
-    axiosClient.delete(`/blogPost/${p.post_id}`).catch(err => {
+    axiosClient.delete(`/blogPost/${p.post_id}`).then(()=>{
+      axiosClient.get('getPosts').then(({data})=>{      
+        setPosts(sliceIntoChunks(data,6))
+        setLoading(false)
+
+      }).catch(err => {
+        const response = err.response;
+        if (response && response.status === 422) {
+          setErrors(response.data.errors)
+          
+        }
+      })
+    }).catch(err => {
       const response = err.response;
       if (response && response.status === 422) {
         setErrors(response.data.errors)
@@ -51,6 +64,8 @@ export default function Blog() {
           const response = err.response;
           if (response && response.status === 422) {
             setErrors(response.data.errors)
+            setLoading(false)
+
           }
         }).then(()=>{
           axiosClient.get(`/getPost`,  blogPost)
@@ -60,6 +75,7 @@ export default function Blog() {
             const response = err.response;
             if (response && response.status === 422) {
               setErrors(response.data.errors)
+              setLoading(false)
             }
           })}).then(()=>{
             axiosClient.get('getPosts').then(({data})=>{      
@@ -68,7 +84,7 @@ export default function Blog() {
               const response = err.response;
               if (response && response.status === 422) {
                 setErrors(response.data.errors)
-        
+                setLoading(false)
               }
             })
           })
@@ -87,7 +103,6 @@ export default function Blog() {
           'tag_id':postTag.tag_id,
           'post_id':tempPostId,
         }
-        console.log(tagPostRelation)
         axiosClient.post("/TagsNPosts",tagPostRelation).then(() => {
   
         })
@@ -128,7 +143,6 @@ export default function Blog() {
     })
     axiosClient.get('/seeTags').then(({data})=>{
       setTags(data)
-      console.log(tags)
     })
     axiosClient.get('/seeTagsNPosts').then(({data})=>{
       setTagsNpost(data)
@@ -158,8 +172,6 @@ export default function Blog() {
   };
 
   const addTagToPost = (tag_id , event) => {
-    console.log( event.target)
-    console.log(newPostTags.some(t => t.tag_id === tag_id))
     
     if (newPostTags.some(t => t.tag_id === tag_id) == false) {
       setNewPostTags([...newPostTags , ...[ {'tag_id': tag_id,}]])
@@ -190,7 +202,6 @@ export default function Blog() {
       </section>
       {token &&
         <section className="postingSection">
-           
             <form onSubmit={onSubmit}>
             <div>
               {errors &&
@@ -211,7 +222,6 @@ export default function Blog() {
               </div>
               <div>
                 <label htmlFor="fileInput">Select file</label>
-                <p>{blogPost.post_image}</p>
                 <input onChange={ev => setBlogPost({...blogPost, post_image: ev.target.files[0].name})} type="file" accept="image/png, image/jpeg" name="" id="fileInput" />
               </div>
               <div className="tagHolder">
@@ -223,6 +233,9 @@ export default function Blog() {
                 
               </div>
               <button className="button">Post</button>
+              {loading &&
+              <p> Loading ...</p>
+              }
             </form>
         </section>
       }
@@ -232,65 +245,59 @@ export default function Blog() {
         {posts && !loading &&
         <div>
           {posts.map((post,pageIndex)=>(
-            <>
-            {pageIndex === postsPage &&
-            <div className="page" key={"pageN"+pageIndex+"postsPage"}>
-            <h4>Page : {pageIndex}</h4>
+            <div key={"pageN"+pageIndex+"postsPage"}>
+              {pageIndex === postsPage &&
+              <div className="page" >
+              <h4>Page : {pageIndex}</h4>
 
-            {post.map((p,postIndex)=>(
-                <div key={"postN"+postIndex}>
-                {p.post_image == "no answers" &&
-                  <img src="images/postFiller.png" alt="" />
-                }
-                {p.post_image !== "no answers" &&
-                  <img src={"images/"+p.post_image} alt="" />
-                }
-                <h3>{p.post_title}</h3>
-                <p>{p.post_text}</p>
-                <div className="postTagsHolder">
-                  {tagsNpost &&
-                    <>
-                    {tagsNpost.map(TNP => (
+              {post.map((p,postIndex)=>(
+                  <div key={"postN"+postIndex}>
+                  {p.post_image == "no answers" &&
+                    <img src="images/postFiller.png" alt="" />
+                  }
+                  {p.post_image !== "no answers" &&
+                    <img src={"images/"+p.post_image} alt="" />
+                  }
+                  <h3>{p.post_title}</h3>
+                  <p>{p.post_text}</p>
+                  <div className="postTagsHolder">
+                    {tagsNpost &&
                       <>
-                      
-                      {TNP.post_id == p.post_id &&
-                        <>
+                      {tagsNpost.map((TNP,indexTNP) => (
+                      <div key={"indexTNP"+indexTNP}>
                         
-                        {tags.map((tagP,tagPIndex)=>(
+                        {TNP.post_id == p.post_id &&
                           <>
-                          {tagP.id == TNP.tag_id &&
                           
-                          <div key={"tagPostBlog"+tagPIndex} className="postTags slideButtons">
+                          {tags.map((tagP,tagPIndex)=>(
+                            <div  key={"tagPostBlog"+tagPIndex}>
+                            {tagP.id == TNP.tag_id &&
                             
-                            {tagP.tag_text}
-                            
-                          </div>
-                          }
+                            <div className="postTags slideButtons">
+                              
+                              {tagP.tag_text}
+                              
+                            </div>
+                            }
+                            </div>
+                          ))}
                           </>
-                        ))}
-                        </>
-                        }
+                          }
+                      </div>
+                      ))}
                       </>
-                    ))
-                      
-                        
-                      
-                      
-                    
                     }
-                    </>
+                  </div>
+                  <Link className="readPost" to="#">Read Post</Link>
+                  {user.email == "admin@admin.com" &&
+                  <Link  onClick={ev => onDelete(p)} >Delete</Link>
                   }
                 </div>
-                <Link className="readPost" to="#">Read Post</Link>
-                {user.email == "admin@admin.com" &&
-                <Link  onClick={ev => onDelete(p)} >Delete</Link>
-                }
+                ))
+              }
               </div>
-              ))
-            }
+              }
             </div>
-            }
-            </>
           ))}
         </div>
         }

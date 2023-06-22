@@ -88,7 +88,7 @@ export default function Quizz() {
           }
         }).then(()=> {
           axiosClient.post(`/quizz`, quizzAnswer ).then(() => {
-            setNotification('Quizz sent')
+            setNotification('Thank you for submiting, we will contact you soon !')
           })
           .catch(err => {
             const response = err.response;
@@ -108,7 +108,7 @@ export default function Quizz() {
           }
         }).then(()=> {
           axiosClient.post(`/quizz`, quizzAnswer ).then(() => {
-            setNotification('Quizz sent')
+            setNotification('Thank you for submiting, we will contact you soon !')
             navigate("/profile")
           }).catch(err => {
             const response = err.response;

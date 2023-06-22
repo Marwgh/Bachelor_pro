@@ -79,11 +79,31 @@
   position: relative;
 }
 
+.postTagsHolder {
+  scrollbar-width: auto;
+  scrollbar-color: var(--primaryColor) var(--quadraryColor);
+}
+
+
+.postTagsHolder::-webkit-scrollbar {
+  width: 16px;
+}
+
+.postTagsHolder::-webkit-scrollbar-track {
+  background: var(--quadraryColor);
+}
+
+.postTagsHolder::-webkit-scrollbar-thumb {
+  background-color: var(--primaryColor);
+  border-radius: 10px;
+  border: 3px solid var(--quadraryColor);
+}
+
 #blogPage>.blogsList .page .postTagsHolder {
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: auto;
   padding: 0.5vw 0;
   align-items: center;
 }
@@ -155,10 +175,11 @@
 
 #blogPage .postingSection {
   width: 80vw;
-  height: 50vw;
+  height: 60vw;
   padding: 0 10vw;
   display: grid;
   justify-content: center;
+  margin-top: 2vw;
 }
 
 #blogPage .postingSection form {

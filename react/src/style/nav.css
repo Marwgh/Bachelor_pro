@@ -19,7 +19,7 @@ nav a {
 
 .linkHolder1 {
   display: flex;
-  grid-column: 6/9;
+  grid-column: 6/10;
   width: 100%;
   align-items: center;
   justify-content: space-around;

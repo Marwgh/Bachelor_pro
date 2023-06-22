@@ -12,6 +12,7 @@ import Home from "./views/home.jsx";
 import Quizz from "./views/quizz.jsx";
 import Blog from "./views/blog.jsx";
 import AboutUs from "./views/aboutUs.jsx";
+import Construction from "./views/construction.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
     {
       path: '/aboutUs',
       element: <AboutUs/>,
+    },
+    {
+      path: '/construction',
+      element: <Construction/>,
     },
     {
       path: '*',

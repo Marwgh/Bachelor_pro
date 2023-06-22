@@ -11,7 +11,7 @@ export default function Banner(props) {
       <div>
         <img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" />
         <h2>{title}</h2>
-        <Link to="#" className='button'>Take Your Quiz Now </Link>
+        <Link to="/quizz" className='button'>Take Your Quiz Now </Link>
         <div className="reviewBanner">
           <p>★★★★</p>
           <p>4.7 / 5 Review </p>

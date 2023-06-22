@@ -32,7 +32,6 @@ export default function Signup() {
       password :passwordRef.current.value,
       password_confirmation :passwordConfirmRef.current.value
     }
-    console.log(payload);
     
     
     axiosClient.post('/signup', payload)
@@ -44,7 +43,6 @@ export default function Signup() {
     .catch(error => {
       const response = error.response;
       if (response && response.status === 422) {
-        console.log(response.data.errors);
         setErrors(response.data.errors);
       }
     })
@@ -74,7 +72,7 @@ export default function Signup() {
           <input ref={emailRef} type="email" placeholder="email"  />
         </div>
         <div>
-          <label htmlFor="">Password</label>
+          <label htmlFor="">Password (min 8 & Symbol)</label>
           <input ref={passwordRef} type="password" placeholder="password"  />
         </div>
         <div>

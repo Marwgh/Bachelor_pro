@@ -20,8 +20,8 @@ export default function Home() {
         <h1>Marketing Roadmap for Generating New Sales.</h1>
         <p>Transform your marketing strategy and skyrocket your sales by implementing our proven 9-Step roadmap. Experience up to 2X increase in just 90 days.</p>
         <div className="buttonHolderHeader">
-          <Link className="button" to="#">Claim your free website audit</Link>
-          <Link className="learnMore" to="#">Learn more about out approach </Link>
+          <Link className="button" to="/construction">Claim your free website audit</Link>
+          <Link className="learnMore" to="/construction">Learn more about out approach </Link>
         </div>
         <div className="reviewHeader">
         <p>★★★★</p>
@@ -81,7 +81,7 @@ export default function Home() {
           text={"Inability to track and measure the success of digital marketing efforts."}/>
           </div>
         </div>
-        <Link to="#" className="button">Learn about our approach</Link>
+        <Link to="/construction" className="button">Learn about our approach</Link>
       </section>
       <section className="heavyLifting">
         <div className="img"></div>
@@ -89,7 +89,7 @@ export default function Home() {
           <div>
             <h2>Leave the heavy lifting to us.</h2>
             <p>We utilize online marketing strategies to effectively increase sales and solve real-world business challenges.</p>
-            <Link className="learnMore" to="#"><img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" /> Learn about our approach</Link>
+            <Link className="learnMore" to="/construction"><img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" /> Learn about our approach</Link>
           </div>
           <div>
             <Strategies
@@ -152,10 +152,10 @@ export default function Home() {
             <p className="text">We keep track of and evaluate the effectiveness of the tactics executed in earlier stages. Based on the analysis, necessary changes are made to enhance performance and attain the optimal outcome.</p>
           </div>
           
-          <Link to="#">Learn more</Link>
+          <Link to="/construction">Learn more</Link>
           
         </div>
-        <Link className="button" to="#">Learn about our approach</Link>
+        <Link className="button" to="/construction">Learn about our approach</Link>
       </section>
       
       <img className="fillerImageSection" src="../images/fillerSeven.png" alt="" />
@@ -345,7 +345,7 @@ export default function Home() {
                 <p>7Flower is a leading functional mushroom company that offers high-quality natural supplements made from mushrooms with a long history of use in ancient Chinese medicine.<br/><br/>
 Through their e-Commerce store, we helped them transform their business from a monthly loss to generating €11,965.25 in sales in just 30 days, with only €3,079.40 invested in advertising.<br/><br/>
 The effectiveness of the marketing strategy coupled with the demand for their physical products, was the perfect formula for turning this company around</p>
-                <Link>Read More</Link>
+                <Link to="/construction">Read More</Link>
               </div>
           </div>
           </div>
@@ -373,7 +373,7 @@ The effectiveness of the marketing strategy coupled with the demand for their ph
             </div>
             <div className="descriptionHolder">
                 <p>$600,000 /Month in Subscription sales for them with only $115 K in ad spent, they are a content agency and they sell their content SEO agencies, Bloggers, Media agencies, and blog content firms  </p>
-                <Link>Read More</Link>
+                <Link to="/construction">Read More</Link>
               </div>
           </div>
           </div>
@@ -400,7 +400,7 @@ The effectiveness of the marketing strategy coupled with the demand for their ph
               <div className="descriptionHolder">
                 <p>Our company was tasked with managing the lead generation and sales for this rapidly growing restaurant chain.<br/><br/>
 This project has been a huge success, based on the increase of revenue, showing our expertise in lead magnet creation and optimisation space.Through our lead magnets and conversion funnels, we were able to achieve a cost per lead of under $1 and a cost per click of under $0.20.</p>
-                <Link>Read More</Link>
+                <Link to ="/construction">Read More</Link>
               </div>
             </div>
             

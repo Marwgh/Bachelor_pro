@@ -43,3 +43,8 @@ Route::post('/quizz' , [QuizzController::class , 'create']);
 Route::get('/seeTags', [TagController::class, 'index' ]);
 Route::get('/seeTagsNPosts', [Tag_PostController::class , 'index'] );
 
+
+Route::fallback(function(){
+    return response()->json([
+        'message' => 'Page Not Found'], 404);
+});

@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <p>At Endorfinas Media, we recognize that reaching marketing objectives can be a challenge. <br/> <br/>
             To assist our clients in overcoming this, we have created a 9-step roadmap that guarantees success.</p>
-            <Link to="#" className="learnMore">Learn About Our Approach</Link>
+            <Link to="/construction" className="learnMore">Learn About Our Approach</Link>
           </div>
         </div>
         <div>

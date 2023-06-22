@@ -22,11 +22,11 @@ export default function SecondaryLayout() {
         <Link to="/aboutUs">About Us</Link>
         <Link to="/quizz">Quizz</Link>
         <Link to="/blog">Blog</Link>
-        <Link to="#">Get started</Link>
+        <Link to="/construction">Get started</Link>
       </div>
       <div className="linkHolder2">
         <Link className="button" to="/login">Sign in</Link>
-        <Link className="learnMore" to="#"><img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" /> Learn more about our approach</Link>
+        <Link className="learnMore" to="/construction"><img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" /> Learn more about our approach</Link>
       </div>
       
       </nav>

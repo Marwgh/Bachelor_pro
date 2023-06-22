@@ -539,3 +539,16 @@ form .button {
   align-items: center;
   justify-content: space-between;
 }
+
+#construction {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#construction img {
+  width: 8vw;
+  height: auto;
+}

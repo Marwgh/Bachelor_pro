@@ -26,7 +26,6 @@ export default function DefaultLayout() {
       }
       setUser(data)
     })
-  console.log(notification)
 
   },[])
 
@@ -38,14 +37,14 @@ export default function DefaultLayout() {
           <Link to="/aboutUs">About Us</Link>
           <Link to="/quizz">Quizz</Link>
           <Link to="/blog">Blog</Link>
-          <Link to="#">Get started</Link>
+          <Link to="/construction">Get started</Link>
           {user.admin &&
-            <Link to="/dashboard">dashboard</Link>
+            <Link to="/dashboard">Dashboard</Link>
           }
         </div>
         <div className="linkHolder2">
           <Link className="button" to="/profile">profile</Link>
-          <Link className="learnMore" to="#"><img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" />Learn more about our approach</Link>
+          <Link className="learnMore" to="/construction"><img src="../svg/endorFinasIcon.svg" alt="endorFinasIcon" />Learn more about our approach</Link>
         </div>
       </nav>
       <div className="content">

@@ -17,6 +17,7 @@
   border-radius: 0.5vw 0.5vw 0 0;
   overflow: hidden;
   width: 70vw;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 #dashboardPage table thead {
@@ -71,14 +72,14 @@
   width: 15vw;
 }
 
-#dashboardPage table>tbody>.pageNumber {
+#dashboardPage .pageNumber {
   position: absolute;
-  top: 15vw;
-  right: -5vw;
+  top: 20vw;
+  right: 10vw;
 
 }
 
-#dashboardPage table>tbody>.pageNumber>td {
+#dashboardPage .pageNumber>p {
   font-size: 3vw;
   font-weight: 700;
   color: var(--primaryColor);
@@ -119,8 +120,9 @@
   background-color: var(--quadraryColor);
   border-radius: 0.5vw;
   padding: 3vw;
-  height: 40vw;
+  height: 70vh;
   position: relative;
+  overflow-y: auto;
 }
 
 #dashboardPage #userInforModale>div .button {

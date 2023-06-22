@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exceptions;
-
+use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -18,13 +18,17 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    /**
+    /** 
      * Register the exception handling callbacks for the application.
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (NotFoundHttpException $e, Request $request) {
+            if ($request->is('api/*')) {
+                return response()->json([
+                    'message' => 'Record not found.'
+                ], 404);
+            }
         });
     }
 }

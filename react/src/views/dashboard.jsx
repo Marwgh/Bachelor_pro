@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../axios-client.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserInforModale from "./item/userInfo.jsx"
 import {useStateContext} from "../context/ContextProvider.jsx";
 
@@ -9,17 +9,26 @@ export default function Dashboard() {
   const [errors, setErrors] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [loading,setLoading] = useState(false);
-  const {setNotification} = useStateContext();
+  const {user,setNotification} = useStateContext();
   const [userEmail,setUserEmail] = useState(null);
   const [quizzs,setQuizzs] = useState([]);
   const [userPage,setUserPage] = useState(0);
   const [chunkedUsers,setChunkedUsers] = useState([])
-  
+  const navigate = useNavigate();
+  const goHome = () => {
+    navigate("/home");
 
+  }
   useEffect( () => {
     getUers();
   }, [])
-
+  useEffect(() => {
+    if (user.email !== "admin@admin.com" && user.email !== undefined) {
+      goHome()
+    }
+  }, [user])
+  
+  
   const onDelete = (u) => {
     if (!window.confirm(`Delete user ${u.name}?`)){
       return
@@ -47,6 +56,8 @@ export default function Dashboard() {
     }).catch(()=>{
       setLoading(false)
     })
+    
+    
   }
   function openModal(user) {
     setShowModal (true);
@@ -146,9 +157,7 @@ export default function Dashboard() {
             <>
             {index === userPage &&
             <tbody  key={"tbodyN"+index}>
-              <tr className="pageNumber">
-                <td>{index}</td>
-              </tr>
+              
               {a.map((u,Tindex)=>(
                 <>
                 {u.email !== "admin@admin.com" &&
@@ -179,7 +188,9 @@ export default function Dashboard() {
         
         
       </table>
-
+      <div className="pageNumber">
+        <p>{userPage}</p>
+      </div>
       {!loading &&
       <div className="slideBtnHolder">
         <div className="slideButtons" onClick={()=> prevSlide()  }>Previous</div>

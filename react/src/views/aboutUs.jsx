@@ -52,7 +52,7 @@ export default function AboutUs() {
           Icon={"../svg/congratulationsIcon.svg"} 
           text={"Our company’s guiding principle is to always strive for greatness, maintain passion in our work, foster a curious mindset, and approach everything with humility. This is encapsulated in our motto: “Be Great, Be Passionate, Be Curious, Be Humble.”"}/>
         </div>
-        <Link to="#" className="button">
+        <Link to="/construction" className="button">
         Claim your free website audit
         </Link >
       </section>
@@ -83,7 +83,7 @@ export default function AboutUs() {
         {/* <video src=""></video> */}
         <p>In comming ...</p>
         <p>Marketing  |  InfinityGrowth  |  Sales Accelerator </p>
-        <Link to="#" className="button">
+        <Link to="/construction" className="button">
         Claim your free website audit
         </Link> 
       </section>
@@ -118,7 +118,7 @@ export default function AboutUs() {
         Icon={"../svg/growthIcon.svg"} 
         text={"We optimize performance through ongoing analysis and adjustments to ensure maximum results.With this comprehensive approach, we can provide a clear and organized path for achieving your sales & marketing goals."}/>
         </div>
-      <Link to="#" className="button">
+      <Link to="/construction" className="button">
         Claim your free website audit
       </Link>
       </section>
